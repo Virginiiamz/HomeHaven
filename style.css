@@ -1,0 +1,43 @@
+:root {
+    --color-primario: #5799c0;
+    --color-secundario: #96e645;
+    --color-terciario: #ffaa8f;
+    --color-secundario-claro: #bff589;
+}
+
+/* HEADER */
+header {
+    border-bottom: 2px solid var(--color-secundario);
+}
+
+.navbar {
+    background-color: var(--color-primario);
+}
+
+.navbar-toggler {
+    margin-left: auto;
+}
+
+.logo {
+    width: 5rem;
+}
+
+.btnSesion{
+    padding: 0.5rem 2rem;
+    background-color: var(--color-secundario);
+    color: white;
+    transition: 0.7s;
+}
+
+.btnSesion:hover {
+    background-color: white;
+    color: var(--color-primario);
+}
+
+.nav-link {
+    margin: 0rem 0.5rem;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
