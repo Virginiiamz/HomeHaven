@@ -41,3 +41,11 @@ header {
 .nav-link:hover {
     text-decoration: underline;
 }
+
+/* Pagina Inicio */
+
+/* Carrusel */
+
+.carousel-inner {
+    height: 100vh;
+}
