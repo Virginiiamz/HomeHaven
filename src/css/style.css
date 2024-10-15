@@ -51,6 +51,28 @@ header {
 
 /* Carrusel */
 
-.carousel-inner {
-    height: 100vh;
+/* .carousel-inner {
+    height: auto;
+} */
+
+/* Servicios */
+
+#cardServicios {
+    border: 2px solid var(--color-primario);
+    transition: 0.7s;
 }
+
+#cardServicios:hover {
+    transform: scale(1.1);
+}
+
+#imagenServicios {
+    width: 15rem;
+}
+
+@media screen and (max-width:540px) {
+    #imagenServicios {
+        width: 8rem;
+    }
+}
+
