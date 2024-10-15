@@ -29,13 +29,18 @@ header {
     transition: 0.7s;
 }
 
+.bi-person-circle {
+    color: white;
+    transition: 0.7s;
+}
+
 .btnSesion:hover {
     background-color: white;
     color: var(--color-primario);
 }
 
-.nav-link {
-    margin: 0rem 0.5rem;
+.btnSesion:hover .bi-person-circle {
+    color: var(--color-primario);
 }
 
 .nav-link:hover {
