@@ -81,25 +81,94 @@
         </section>
 
         <section class="row gap-5 justify-content-lg-center my-5 mx-5 mx-lg-0">
+            <h2 class="text-center">¿Qué servicios ofrecemos?</h2>
+
             <div id="cardServicios" class="card col-lg-3">
-                <img src="src/img/asesoramiento_personal.png" id="imagenServicios" class="card-img-top img-fluid align-self-center mt-2" alt="Asesoramiento Personal">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Asesoramiento personal</h5>
-                </div>
+                <a href="#" class="align-self-center text-decoration-none text-black" data-bs-toggle="modal"
+                    data-bs-target="#asesoramientoPersonal">
+                    <img src="src/img/asesoramiento_personal.png" id="imagenServicios"
+                        class="card-img-top img-fluid mt-2" alt="Asesoramiento Personal">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Asesoramiento personal</h5>
+                    </div>
+                </a>
             </div>
             <div id="cardServicios" class="card col-lg-3">
-                <img src="src/img/negociacion_de_precios.png" id="imagenServicios" class="card-img-top img-fluid align-self-center mt-2" alt="Negociacion de precios">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Negociacion de precios</h5>
-                </div>
+                <a href="#" class="align-self-center text-decoration-none text-black" data-bs-toggle="modal"
+                    data-bs-target="#negociacionPrecios">
+                    <img src="src/img/negociacion_de_precios.png" id="imagenServicios"
+                        class="card-img-top img-fluid mt-2" alt="Negociacion de precios">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Negociación de precios</h5>
+                    </div>
+                </a>
             </div>
             <div id="cardServicios" class="card col-lg-3">
-                <img src="src/img/administrar_propiedades.png" id="imagenServicios" class="card-img-top img-fluid align-self-center mt-2" alt="Administracion de propiedades">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Adms. de propiedades</h5>
-                </div>
+                <a href="#" class="align-self-center text-decoration-none text-black" data-bs-toggle="modal"
+                    data-bs-target="#adminPropiedades">
+                    <img src="src/img/administrar_propiedades.png" id="imagenServicios"
+                        class="card-img-top img-fluid mt-2" alt="Administracion de propiedades">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Adms. de propiedades</h5>
+                    </div>
+                </a>
             </div>
         </section>
+
+        <div class="modal fade " id="asesoramientoPersonal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Asesoramiento personal</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Te ofrecemos una orientacion personalizada cuando desees comprar, vender o alquilar
+                            propiedades, evaluando tus necesidades. ¡Te ayudaremos a tomar decisiones!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade " id="negociacionPrecios" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Negociación de precios</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Jugaremos como papel clave, utilizando los conocimientos del mercado y nuestras habilidades
+                            de negociación para obtener el mejor trato posible.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade " id="adminPropiedades" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Administración de propiedades</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Gestionaremos y supervisaremos los inmuebles de la propiedad, con el objetivo de maximizar
+                            su valor, mantener su operatividad y rentabilidad. Y sobre todo para que esteis tranquilos
+                            en nuestras manos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
 
