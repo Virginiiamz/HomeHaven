@@ -47,7 +47,7 @@
                         </li>
                     </ul>
                     <div class="d-flex justify-content-end">
-                        <a href="#" class="btnSesion text-decoration-none rounded-2 border-0 fw-medium fs-5"><i
+                        <a href="#" class="btnSesion text-decoration-none rounded-2 border-0 fw-medium fs-5" id="iniciarSesion"><i
                                 class="bi bi-person-circle me-1"></i>
                             Iniciar sesion</a>
                     </div>
@@ -58,6 +58,10 @@
     </header>
 
     <main>
+        <section>
+            <div id="alertaInicSesion"></div>
+        </section>
+
         <section id="carouselExampleSlidesOnly" class="carousel slide h-auto" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div id="carouselImagen" class="carousel-item active">
@@ -84,8 +88,9 @@
             <h2 class="text-center">¿Qué servicios ofrecemos?</h2>
 
             <div id="cardServicios" class="card col-lg-3 col-10">
-                <a href="#" class="align-self-center text-decoration-none text-black d-flex flex-column align-content-center" data-bs-toggle="modal"
-                    data-bs-target="#asesoramientoPersonal">
+                <a href="#"
+                    class="align-self-center text-decoration-none text-black d-flex flex-column align-content-center"
+                    data-bs-toggle="modal" data-bs-target="#asesoramientoPersonal">
                     <img src="src/img/asesoramiento_personal.png" id="imagenServicios"
                         class="card-img-top img-fluid mt-2 align-self-center" alt="Asesoramiento Personal">
                     <div class="card-body">
@@ -94,8 +99,9 @@
                 </a>
             </div>
             <div id="cardServicios" class="card col-lg-3 col-10">
-                <a href="#" class="align-self-center text-decoration-none text-black d-flex flex-column align-content-center" data-bs-toggle="modal"
-                    data-bs-target="#negociacionPrecios">
+                <a href="#"
+                    class="align-self-center text-decoration-none text-black d-flex flex-column align-content-center"
+                    data-bs-toggle="modal" data-bs-target="#negociacionPrecios">
                     <img src="src/img/negociacion_de_precios.png" id="imagenServicios"
                         class="card-img-top img-fluid mt-2 align-self-center" alt="Negociacion de precios">
                     <div class="card-body">
@@ -104,8 +110,9 @@
                 </a>
             </div>
             <div id="cardServicios" class="card col-lg-3 col-10">
-                <a href="#" class="align-self-center text-decoration-none text-black d-flex flex-column align-content-center" data-bs-toggle="modal"
-                    data-bs-target="#adminPropiedades">
+                <a href="#"
+                    class="align-self-center text-decoration-none text-black d-flex flex-column align-content-center"
+                    data-bs-toggle="modal" data-bs-target="#adminPropiedades">
                     <img src="src/img/administrar_propiedades.png" id="imagenServicios"
                         class="card-img-top img-fluid mt-2 align-self-center" alt="Administracion de propiedades">
                     <div class="card-body">
@@ -190,7 +197,8 @@
                 <a href="https://www.instagram.com/?hl=es" target="_blank">
                     <i class="bi bi-instagram text-white fs-5"></i>
                 </a>
-                <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F%3Flocale%3Des_ES" target="_blank">
+                <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F%3Flocale%3Des_ES"
+                    target="_blank">
                     <i class="bi bi-facebook text-white fs-5"></i>
                 </a>
             </div>
@@ -201,6 +209,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"
         defer></script>
+    <script src="src/js/alertaInicio.js"></script>
 </body>
 
 </html>
