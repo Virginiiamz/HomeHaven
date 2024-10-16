@@ -51,9 +51,10 @@ header {
 
 /* Carrusel */
 
-/* .carousel-inner {
-    height: auto;
-} */
+#carouselImagen {
+    width: 100%;
+    height: 600px;
+}
 
 /* Servicios */
 
