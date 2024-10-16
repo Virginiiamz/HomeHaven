@@ -5,6 +5,25 @@
     --color-secundario-claro: #bff589;
 }
 
+/* Elementos globales */
+
+.btnSecundario {
+    background-color: var(--color-secundario);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    width: 15rem;
+    text-align: center;
+    transition: 0.7s;
+}
+
+.btnSecundario:hover {
+    background-color: white;
+    color: var(--color-primario);
+}
+
 /* HEADER */
 header {
     border-bottom: 2px solid var(--color-secundario);
@@ -73,13 +92,16 @@ header {
 
 /* Mas Informacion (Inicio) */
 
-/* .masInformacion {
-    border: 2px solid red;
-    margin-top: 2rem;
-} */
-
-.masInformacion_video {
+.masInformacion {
     height: 80vh;
+    background-image: url(../img/hover_inicio.jpg);
+    background-position: center center;
+}
+
+.masInformacion_fondo {
+    height: 80vh;
+    width: 100%;
+    background-color: #3232329c;
 }
 
 /* Media Queries */
