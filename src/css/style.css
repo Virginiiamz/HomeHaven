@@ -77,6 +77,10 @@ header {
 
 /* Servicios */
 
+#servicios {
+    margin: 0 auto;
+}
+
 #cardServicios {
     border: 2px solid var(--color-primario);
     transition: 0.7s;
