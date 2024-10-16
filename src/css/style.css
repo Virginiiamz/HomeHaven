@@ -73,6 +73,11 @@ header {
 
 /* Mas Informacion (Inicio) */
 
+/* .masInformacion {
+    border: 2px solid red;
+    margin-top: 2rem;
+} */
+
 .masInformacion_video {
     height: 80vh;
 }
