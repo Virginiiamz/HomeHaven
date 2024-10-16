@@ -104,6 +104,12 @@ header {
     background-color: #3232329c;
 }
 
+/* Footer */
+
+footer {
+    background-color: var(--color-primario);
+}
+
 /* Media Queries */
 
 @media screen and (max-width:540px) {
