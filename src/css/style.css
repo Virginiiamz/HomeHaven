@@ -67,6 +67,11 @@ header {
     margin-left: auto;
 }
 
+#enlaceNav {
+    color: white;
+    transition: 0.7s;
+}
+
 .logo {
     width: 5rem;
 }
@@ -92,8 +97,8 @@ header {
     color: var(--color-primario);
 }
 
-.nav-link:hover {
-    text-decoration: underline;
+#enlaceNav:hover {
+    color: var(--color-secundario);
 }
 
 /* Pagina Inicio */
