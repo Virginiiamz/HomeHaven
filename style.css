@@ -1,0 +1,186 @@
+/* Fuentes */
+@font-face {
+    font-family: 'OpenSans-Regular';
+    src: url(../fonts/Open_Sans/static/OpenSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Poppins-Regular';
+    src: url(../fonts/Poppins/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Poppins-Medium';
+    src: url(../fonts/Poppins/Poppins-Medium.ttf);
+}
+
+/* Variables creadas */
+
+:root {
+    --color-primario: #5799c0;
+    --color-secundario: #377CA5;
+    --color-terciario: #1D6996;
+}
+
+/* Elementos globales */
+a {
+    font-family: 'Opensans-Regular';
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins-Medium';
+}
+
+h4, h5, h6, p {
+    font-family: 'Poppins-Regular';
+}
+
+
+.btnSecundario {
+    background-color: var(--color-secundario);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    width: 15rem;
+    text-align: center;
+    transition: 0.7s;
+}
+
+.btnSecundario:hover {
+    background-color: white;
+    color: var(--color-primario);
+}
+
+/* HEADER */
+header {
+    border-bottom: 2px solid var(--color-secundario);
+}
+
+.navbar {
+    background-color: var(--color-primario);
+}
+
+.navbar-toggler {
+    margin-left: auto;
+}
+
+#enlaceNav {
+    color: white;
+    transition: 0.7s;
+}
+
+.logo {
+    width: 5rem;
+}
+
+#iniciarSesion {
+    color: var(--color-primario);
+}
+
+.bi-person-circle {
+    color: var(--color-primario);
+    transition: 0.7s;
+}
+
+#enlaceNav:hover {
+    background-color: var(--color-terciario);
+    border-radius: 8px;
+}
+
+/* Pagina Inicio */
+
+/* Carrusel */
+
+#carouselImagen {
+    width: 100%;
+    height: 90vh;
+}
+
+/* Servicios */
+
+#servicios {
+    margin: 0 auto;
+}
+
+#cardServicios {
+    border: 2px solid var(--color-primario);
+    transition: 0.7s;
+}
+
+#cardServicios:hover {
+    transform: scale(1.1);
+}
+
+#imagenServicios {
+    width: 15rem;
+}
+
+/* Mas Informacion (Inicio) */
+
+.masInformacion {
+    height: 80vh;
+    background-image: url(../img/hover_inicio.jpg);
+    background-position: center center;
+}
+
+.masInformacion_fondo {
+    height: 80vh;
+    width: 100%;
+    background-color: #3232329c;
+}
+
+/* Footer */
+
+footer {
+    background-color: var(--color-primario);
+}
+
+/* INTRO PAGINA COMPRA */
+.comprarCasa {
+    height: 80vh;
+    background-image: url(../img/viviendas/01_casa.jpg);
+    background-position: center center;
+    /* filter: blur(10px);
+    -webkit-filter: blur(10px); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.comprarCasaForm{
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: var(--color-secundario);
+    
+}
+
+.comprarCasaForm .btn{
+    color: var(--color-primario);
+}
+
+#ventasDisponibles .card{
+    border: 2px solid var(--color-primario);
+}
+
+#ventasDisponibles .btn{
+    background-color: var(--color-secundario);
+    color: white;
+}
+
+/* Media Queries */
+
+@media screen and (max-width:540px) {
+
+    #imagenServicios {
+        width: 8rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #carouselImagen {
+        height: auto;
+    }
+}
+
