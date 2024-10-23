@@ -137,6 +137,38 @@ footer {
     background-color: var(--color-primario);
 }
 
+/* INTRO PAGINA COMPRA */
+.comprarCasa {
+    height: 80vh;
+    background-image: url(../img/viviendas/01_casa.jpg);
+    background-position: center center;
+    /* filter: blur(10px);
+    -webkit-filter: blur(10px); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.comprarCasaForm{
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: var(--color-secundario);
+    
+}
+
+.comprarCasaForm .btn{
+    color: var(--color-primario);
+}
+
+#ventasDisponibles .card{
+    border: 2px solid var(--color-primario);
+}
+
+#ventasDisponibles .btn{
+    background-color: var(--color-secundario);
+    color: white;
+}
+
 /* Media Queries */
 
 @media screen and (max-width:540px) {
