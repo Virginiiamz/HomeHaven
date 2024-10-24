@@ -123,6 +123,8 @@ header {
     height: 80vh;
     background-image: url(../img/hover_inicio.jpg);
     background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .masInformacion_fondo {
