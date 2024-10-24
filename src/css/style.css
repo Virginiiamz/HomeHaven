@@ -162,6 +162,10 @@ footer {
     color: var(--color-primario);
 }
 
+#ventasDisponibles {
+    width: 100%;
+}
+
 #ventasDisponibles .card{
     border: 2px solid var(--color-primario);
 }
