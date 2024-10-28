@@ -157,7 +157,6 @@ footer {
 }
 
 .comprarCasaForm{
-    border: 1px solid black;
     border-radius: 15px;
     background-color: var(--color-secundario);
     
@@ -165,6 +164,7 @@ footer {
 
 .comprarCasaForm .btn{
     color: var(--color-primario);
+    font-weight: bold;
 }
 
 #ventasDisponibles {
