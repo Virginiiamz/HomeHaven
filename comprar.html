@@ -57,7 +57,6 @@
             </div>
         </nav>
     </header>
-
     <main>
         <section>
             <div id="alertaInicSesion"></div>
@@ -65,26 +64,33 @@
 
         <section class="comprarCasa_seccion">
             <div class="comprarCasa d-flex justify-content-center align-items-center">
-                <div class="comprarCasaForm w-50">
-                    <form class="d-flex p-4">
-                        <select class="form-control me-2 w-33">
-                            <option>Viviendas</option>
-                            <option>Obra nueva</option>
-                            <option>Habitación</option>
-                            <option>Garajes</option>
-                            <option>Trasteros</option>
-                            <option>Oficinas</option>
-                            <option>Locales o naves</option>
-                            <option>Traspasos</option>
-                            <option>Terrenos</option>
-                            <option>Edificios</option>
-                            <option>Piso o loft</option>
-                        </select>
-                        <input type="text" class="form-control me-2" id="inputUbicacion" placeholder="Ubicacion">
-                        <button type="button" class="btn btn-light">BUSCAR</button>
+                <div class="comprarCasaForm container-fluid container-md w-md-75">
+                    <form class="p-4">
+                        <div class="row d-flex justify-content-center align-items-center">
+                            <div class="col-12 col-md-4 mb-3 mb-md-0">
+                                <select class="form-select">
+                                    <option selected>Viviendas</option>
+                                    <option>Obra nueva</option>
+                                    <option>Habitación</option>
+                                    <option>Garajes</option>
+                                    <option>Trasteros</option>
+                                    <option>Oficinas</option>
+                                    <option>Locales o naves</option>
+                                    <option>Traspasos</option>
+                                    <option>Terrenos</option>
+                                    <option>Edificios</option>
+                                    <option>Piso o loft</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-5 mb-3 mb-md-0">
+                                <input type="text" class="form-control" id="inputUbicacion" placeholder="Ubicacion">
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <button type="button" class="btn btn-light w-100">BUSCAR</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
-
             </div>
         </section>
 
