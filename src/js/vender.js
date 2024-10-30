@@ -22,3 +22,20 @@ document.getElementById('venderForm').addEventListener('submit', function(event)
         document.getElementById('venderForm').reset();
     }, 3000);
 });
+
+
+// funcion del spinner
+document.getElementById('venderForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+  
+    // Disable the submit button and show the spinner
+    document.getElementById('submitBtn').disabled = true;
+    document.getElementById('spinner').classList.remove('d-none');
+  
+    // Simulate a delay before hiding the spinner and enabling the submit button
+    setTimeout(function() {
+      document.getElementById('submitBtn').disabled = false;
+      document.getElementById('spinner').classList.add('d-none');
+    }, 2000);
+  });
+  
