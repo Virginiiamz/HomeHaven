@@ -44,25 +44,28 @@
             <h2 class="text-center mb-4">La Mejor Página para Vender tu Propiedad</h2>
             <p class="text-center">Ponte en contacto con nosotros</p>
             <form id="venderForm" class="row g-3" action="#" method="POST">
-                <div class="col-md-6"><input type="text" class="form-control" placeholder="Nombre Completo" id="nombre" name="nombre" required></div>
-                <div class="col-md-6"><input type="text" class="form-control" placeholder="DNI" id="dni" name="dni" required></div>
-                <div class="col-md-6"><input type="email" class="form-control" placeholder="Email" id="email" name="email" required></div>
-                <div class="col-md-6"><input type="text" class="form-control" placeholder="Teléfono" id="telefono" name="telefono" maxlength="9" required></div>
-                <div class="col-12"><input type="text" class="form-control" placeholder="Dirección de la Propiedad a Vender" id="direccion" name="direccion" required></div>
-                <div class="col-md-6"><input type="text" class="form-control" placeholder="Código Postal" id="codigoPostal" name="codigoPostal" required></div>
-                <div class="col-md-6"><input type="text" class="form-control" placeholder="Ciudad" id="ciudad" name="ciudad" required></div>
-                <div class="col-12 text-center">
-                    <button type="submit" class="btn btn-primary" id="submitBtn">
-                        <span class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true" id="spinner"></span>
-                        Contactar
-                      </button>
-                      
+              <div class="col-md-6"><input type="text" class="form-control" placeholder="Nombre Completo" id="nombre" name="nombre" required></div>
+              <div class="col-md-6"><input type="text" class="form-control" placeholder="DNI" id="dni" name="dni" required></div>
+              <div class="col-md-6"><input type="email" class="form-control" placeholder="Email" id="email" name="email" required></div>
+              <div class="col-md-6"><input type="text" class="form-control" placeholder="Teléfono" id="telefono" name="telefono" maxlength="9" required></div>
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-md-6"><input type="text" class="form-control" placeholder="Dirección de la Propiedad a Vender" id="direccion" name="direccion" required></div>
+                  <div class="col-md-3"><input type="text" class="form-control" placeholder="Código Postal" id="codigoPostal" name="codigoPostal" required></div>
+                  <div class="col-md-3"><input type="text" class="form-control" placeholder="Ciudad" id="ciudad" name="ciudad" required></div>
                 </div>
-
-                
-                
+              </div>
+              <div class="col-12 text-end">
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                    <span class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true" id="spinner"></span>
+                    Contactar
+                </button>
+            </div>
+              
+              
             </form>
-        </section>
+          </section>
+          
         
         <!-- cards con las casas vendidas -->
         <section class="container py-5">
@@ -126,7 +129,7 @@
         <section class="container py-5">
             <h3 class="text-center mb-4">Más Imágenes de Propiedades</h3>
             
-            </div>
+            
         </section>
         
     </main>
