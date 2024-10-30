@@ -181,21 +181,7 @@ footer {
     color: white;
 }
 
-/* Media Queries */
-
-@media screen and (max-width:540px) {
-
-    #imagenServicios {
-        width: 8rem;
-    }
-}
-
-@media screen and (max-width: 992px) {
-    #carouselImagen {
-        height: auto;
-    }
-}
-
+/* VENDER */
 
 /* formulario */
 .form-label {
@@ -249,7 +235,7 @@ footer {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: red;
+    background-color: #a80d0dc9;
     color: white;
     font-weight: bold;
     padding: 5px 10px;
@@ -261,4 +247,19 @@ footer {
 
 #spinner.d-none {
     display: none;
+}
+
+/* Media Queries */
+
+@media screen and (max-width:540px) {
+
+    #imagenServicios {
+        width: 8rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #carouselImagen {
+        height: auto;
+    }
 }
