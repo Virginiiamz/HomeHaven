@@ -52,41 +52,77 @@
                 <div class="col-md-6"><input type="text" class="form-control" placeholder="Código Postal" id="codigoPostal" name="codigoPostal" required></div>
                 <div class="col-md-6"><input type="text" class="form-control" placeholder="Ciudad" id="ciudad" name="ciudad" required></div>
                 <div class="col-12 text-center">
-                    <button type="submit" class="btn btn-primary" id="submitBtn">Contactar</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <span class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true" id="spinner"></span>
+                        Contactar
+                      </button>
+                      
                 </div>
+
+                
+                
             </form>
         </section>
         
-
+        <!-- cards con las casas vendidas -->
         <section class="container py-5">
             <h3 class="text-center mb-4">Últimas Propiedades Registradas</h3>
             <div class="row">
                 <div class="col-12 mb-4">
-                    <div class="p-3 border">
-                        <p>Ubicación: Alicante</p>
-                        <p>M2: 120</p>
-                        <p>Precio: 150,000€</p>
-                        <p>Tipo: Casa</p>
-                        
-                        <div class="text-center py-3">
-                            <img src="https://www.vipreformas.es/blog/wp-content/uploads/2-ADAMINI-APS-2_DEBp.jpg" alt="Imagen de la propiedad 1" class="img-fluid">
+                    <div class="property-card p-3 border text-white position-relative">
+                        <div class="property-image" style="background-image: url('https://www.vipreformas.es/blog/wp-content/uploads/2-ADAMINI-APS-2_DEBp.jpg');"></div>
+                        <div class="property-info">
+                            <p>Ubicación: Alicante</p>
+                            <p>M2: 120</p>
+                            <p>Precio: 150,000€</p>
+                            <p>Tipo: Casa</p>
                         </div>
+                        <span class="vendido">Vendido</span>
                     </div>
                 </div>
                 <div class="col-12 mb-4">
-                    <div class="p-3 border">
-                        <p>Ubicación: Madrid</p>
-                        <p>M2: 80</p>
-                        <p>Precio: 100,000€</p>
-                        <p>Tipo: Departamento</p>
-                        
-                        <div class="text-center py-3">
-                            <img src="https://img4.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/ac/cd/26/1271378329.jpg" alt="Imagen de la propiedad 2" class="img-fluid">
+                    <div class="property-card p-3 border text-white position-relative">
+                        <div class="property-image" style="background-image: url('https://img4.idealista.com/blur/WEB_LISTING-M/0/id.pro.es.image.master/ac/cd/26/1271378329.jpg');"></div>
+                        <div class="property-info">
+                            <p>Ubicación: Madrid</p>
+                            <p>M2: 80</p>
+                            <p>Precio: 100,000€</p>
+                            <p>Tipo: Departamento</p>
+                        </div>
+                        <span class="vendido">Vendido</span>
+                    </div>
+                </div>
+
+                <div class="col-12 mb-4">
+                    <div class="property-card p-3 border">
+                        <div class="property-image" style="background-image: url('https://github.com/Virginiiamz/HomeHaven/blob/main/src/img/viviendas/04_casa.jpg?raw=true');"></div>
+                        <div class="property-info">
+                            <span class="vendido">Vendido</span>
+                            <p>Ubicación: Teruel</p>
+                            <p>M2: 100</p>
+                            <p>Precio: 150,000€</p>
+                            <p>Tipo: Departamento</p>
                         </div>
                     </div>
                 </div>
+                
+                <div class="col-12 mb-4">
+                    <div class="property-card p-3 border">
+                        <div class="property-image" style="background-image: url('https://github.com/Virginiiamz/HomeHaven/blob/main/src/img/viviendas/05_casa.jpg?raw=true');"></div>
+                        <div class="property-info">
+                            <span class="vendido">Vendido</span>
+                            <p>Ubicación: Castellón</p>
+                            <p>M2: 150</p>
+                            <p>Precio: 350,000€</p>
+                            <p>Tipo: Casa</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
+        
+        
         <section class="container py-5">
             <h3 class="text-center mb-4">Más Imágenes de Propiedades</h3>
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
