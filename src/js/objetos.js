@@ -8,7 +8,8 @@ class Propiedad {
     #tipovivienda;
     #imagen; 
 
-    constructor(direccion, precio, tipovivienda, imagen) {
+    constructor(idpropiedad, direccion, precio, tipovivienda, imagen) {
+        this.#idpropiedad = idpropiedad;
         this.#direccion = direccion;
         this.#precio = precio;
         this.#tipovivienda = tipovivienda;
@@ -53,6 +54,15 @@ class Propiedad {
 
     set imagen(value) {
         this.#imagen = value;
+    }
+
+    async altaPropiedad(oPropiedad) {
+        let datos = new FormData();
+
+        datos.append("propiedad", JSON.stringify(oPropiedad));
+
+        let respuesta = await peticionPost()
+
     }
 
 }
