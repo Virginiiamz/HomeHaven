@@ -1,6 +1,6 @@
 "use strict";
 
-var oPropiedad;
+var oInmobiliaria = new Inmobiliaria();
 
 registrarEventos();
 
@@ -11,14 +11,16 @@ function registrarEventos() {
 }
 
 async function procesarAltaPropiedad() {
+    alert("ha entrado en procesar alta propiedad");
     
     let direccion = frmAltaPropiedad.AltaPropiedadDireccion.value.trim();
-    let precio = frmAltaPropiedad.AltaPropiedadPrecio.value;
+    let precio = parseFloat(frmAltaPropiedad.AltaPropiedadPrecio.value);
     let tipoPropiedad = frmAltaPropiedad.AltaPropiedadTipo.value;
     // let imagen = frmAltaPropiedad.AltaPropiedadImagen.files[0];
 
-    if (validarAltaPropiedad(precio)) {
-        let respuesta = await oPropiedad.altaPropiedad(new Propiedad(null, direccion, precio, tipoPropiedad));
+    if (validarAltaPropiedad()) {
+        alert("ha entrado en validad alta propiedad");
+        let respuesta = await oInmobiliaria.altaPropiedad(new Propiedad(null, direccion, precio, tipoPropiedad, null));
         alert(respuesta.mensaje);
 
         if (!respuesta.error) {
@@ -28,7 +30,9 @@ async function procesarAltaPropiedad() {
 
 }
 
-function validarAltaPropiedad(precio) {
+function validarAltaPropiedad() {
+
+    let precio = frmAltaPropiedad.AltaPropiedadPrecio.value;
 
     let valido = true;
     let errores = "";
@@ -41,4 +45,6 @@ function validarAltaPropiedad(precio) {
     if (!valido) {
         alert(errores);
     }
+
+    return valido;
 }

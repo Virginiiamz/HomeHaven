@@ -1,6 +1,8 @@
 "use strict";
 
-const rutaBackend = "http://localhost/Proyecto DIW/backend/";
+// const rutaBackend = "http://localhost:80/ProyectoDIW/backend/";
+const rutaBackend = "http://localhost/ProyectoDIW/backend/";
+// const rutaBackend = "Hora Libre Configuracion/www/ProyectoDiw/backend/";
 
 /**
  * Realiza peticiones AJAX de tipo GET
@@ -52,7 +54,9 @@ async function peticionPOST(url, parametros){
     // y los datos que enviamos con la petición
     let oURL = new URL(rutaBackend);
     oURL.pathname += url; // por ejemplo "alta_tipo.php"
-
+    
+    alert("ha entrado en la peticion post");
+    
     let respuestaServidor = await fetch(oURL, {
         body: parametros,  // objeto FormData
         method: "POST"
@@ -60,19 +64,18 @@ async function peticionPOST(url, parametros){
     let response;
 
     if (respuestaServidor.ok) {  // Si es una respuesta http OK (200)
-
+        
         // JSON.parse de los datos recibidos
         response = await respuestaServidor.json();
+        
+    } else { // Respuesta distinta de http OK (200)
+        console.error("Error al acceder al acceder al servidor (STATUS != 200..299).Status: " + respuestaServidor.status);
+        response = {
+            error: true,
+            mensaje: "Error al acceder al acceder al servidor (STATUS != 200..299). Status: " + respuestaServidor.status,
+            datos: null
+        };
+    }
 
-   } else { // Respuesta distinta de http OK (200)
-       console.error("Error al acceder al acceder al servidor (STATUS != 200..299).Status: " + respuestaServidor.status);
-       response = {
-           error: true,
-           mensaje: "Error al acceder al acceder al servidor (STATUS != 200..299). Status: " + respuestaServidor.status,
-           datos: null
-       };
-   }
-
-   alert(response.mensaje);
    return response;
 }

@@ -56,7 +56,11 @@ class Propiedad {
     //     this.#imagen = value;
     // }
 
+}
+
+class Inmobiliaria {
     async altaPropiedad(oPropiedad) {
+        alert("ha entado en alta propiedad de la clase");
         let datos = new FormData();
 
         datos.append("propiedad", JSON.stringify(oPropiedad));
@@ -66,5 +70,4 @@ class Propiedad {
         return respuesta;
 
     }
-
 }
