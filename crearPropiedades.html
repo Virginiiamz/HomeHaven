@@ -58,16 +58,16 @@
             <form class="">
                 <div class="mb-3">
                     <label for="AltaPropiedadDireccion" class="form-label">Dirección: </label>
-                    <input type="text" class="form-control" id="AltaPropiedadDireccion">
+                    <input type="text" class="form-control" id="AltaPropiedadDireccion" name="AltaPropiedadDireccion" required>
                 </div>
                 <div class="mb-3">
                     <label for="AltaPropiedadPrecio" class="form-label">Precio: </label>
-                    <input type="number" class="form-control" id="AltaPropiedadPrecio">
+                    <input type="number" class="form-control" id="AltaPropiedadPrecio" name="AltaPropiedadPrecio" required>
                 </div>
                 <div class="mb-3">
                     <label for="AltaPropiedadTipo" class="form-label">Tipo de propiedad: </label>
-                    <select class="form-select" id="AltaPropiedadTipo">
-                        <option selected>Seleccione una opción...</option>
+                    <select class="form-select" id="AltaPropiedadTipo" name="AltaPropiedadTipo" required>
+                        <option selected value="">Seleccione una opción...</option>
                         <option value="Casa">Casa</option>
                         <option value="Piso">Piso</option>
                         <option value="Apartamento">Apartamento</option>
@@ -76,13 +76,13 @@
                         <option value="Garaje">Garaje</option>
                         <option value="Trastero">Trastero</option>
                         <option value="Oficina">Oficina</option>
-                      </select>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="AltaPropiedadImagen" class="form-label">Imagen: </label>
-                    <input type="file" class="form-control" id="AltaPropiedadImagen">
+                    <input type="file" class="form-control" id="AltaPropiedadImagen" name="AltaPropiedadImagen">
                 </div>
-                <button type="submit" class="btnDarAlta">Registrar</button>
+                <button type="submit" class="btnDarAlta" id="AltaPropiedadBoton">Registrar</button>
             </form>
         </section>
     </main>
