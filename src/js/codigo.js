@@ -11,7 +11,6 @@ function registrarEventos() {
 }
 
 async function procesarAltaPropiedad() {
-    alert("ha entrado en procesar alta propiedad");
     
     let direccion = frmAltaPropiedad.AltaPropiedadDireccion.value.trim();
     let precio = parseFloat(frmAltaPropiedad.AltaPropiedadPrecio.value);
@@ -19,7 +18,6 @@ async function procesarAltaPropiedad() {
     // let imagen = frmAltaPropiedad.AltaPropiedadImagen.files[0];
 
     if (validarAltaPropiedad()) {
-        alert("ha entrado en validad alta propiedad");
         let respuesta = await oInmobiliaria.altaPropiedad(new Propiedad(null, direccion, precio, tipoPropiedad, null));
         alert(respuesta.mensaje);
 

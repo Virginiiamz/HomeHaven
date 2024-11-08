@@ -1,8 +1,6 @@
 "use strict";
 
-// const rutaBackend = "http://localhost:80/ProyectoDIW/backend/";
 const rutaBackend = "http://localhost/ProyectoDIW/backend/";
-// const rutaBackend = "Hora Libre Configuracion/www/ProyectoDiw/backend/";
 
 /**
  * Realiza peticiones AJAX de tipo GET
@@ -28,8 +26,8 @@ async function peticionGET(url, parametros) {
 
     if (respuestaServidor.ok) {  // Si es una respuesta http OK (200)
 
-         // JSON.parse de los datos recibidos
-         response = await respuestaServidor.json();
+        // JSON.parse de los datos recibidos
+        response = await respuestaServidor.json();
 
     } else { // Respuesta distinta de http OK (200)
         console.error("Error al acceder al acceder al servidor (STATUS != 200..299) Status: " + respuestaServidor.status);
@@ -49,25 +47,29 @@ async function peticionGET(url, parametros) {
  * @param {FormData} parametros - Objeto FormData con los parámetros de la llamada 
  * @returns 
  */
-async function peticionPOST(url, parametros){
+async function peticionPOST(url, parametros) {
     // Creamos el objeto URL que contiene la dirección url de la petición
     // y los datos que enviamos con la petición
     let oURL = new URL(rutaBackend);
     oURL.pathname += url; // por ejemplo "alta_tipo.php"
-    
-    alert("ha entrado en la peticion post");
-    
+
     let respuestaServidor = await fetch(oURL, {
+        method: 'POST',
         body: parametros,  // objeto FormData
-        method: "POST"
+        headers: {
+            "Content-Type": "application/json" // Indicamos que estamos enviando JSON
+        }
     });
     let response;
 
     if (respuestaServidor.ok) {  // Si es una respuesta http OK (200)
+
+        //! NO RECOGE LOS DATOS
+        response = respuestaServidor.json();
         
-        // JSON.parse de los datos recibidos
-        response = await respuestaServidor.json();
+        console.log(response);
         
+
     } else { // Respuesta distinta de http OK (200)
         console.error("Error al acceder al acceder al servidor (STATUS != 200..299).Status: " + respuestaServidor.status);
         response = {
@@ -77,5 +79,8 @@ async function peticionPOST(url, parametros){
         };
     }
 
-   return response;
+    console.log(response.datos);
+    
+
+    return response;
 }
