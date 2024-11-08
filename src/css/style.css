@@ -38,12 +38,12 @@ h4, h5, h6, p {
 
 .btnSecundario {
     background-color: var(--color-secundario);
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     border-radius: 8px;
     color: white;
     text-decoration: none;
     font-weight: 600;
-    width: 15rem;
+    width: 18rem;
     text-align: center;
     transition: 0.7s;
 }
@@ -51,6 +51,21 @@ h4, h5, h6, p {
 .btnSecundario:hover {
     background-color: white;
     color: var(--color-primario);
+}
+
+.btnDarAlta {
+    background-color: var(--color-secundario);
+    padding: 0.5rem 1.4rem;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    max-width: 10rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.btnDarAlta:hover {
+    background-color: var(--color-primario);
 }
 
 #alertaInicio {
