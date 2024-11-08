@@ -1,6 +1,6 @@
 "use strict";
 
-var oPropiedad = new Propiedad();
+var oPropiedad;
 
 registrarEventos();
 
@@ -15,10 +15,10 @@ async function procesarAltaPropiedad() {
     let direccion = frmAltaPropiedad.AltaPropiedadDireccion.value.trim();
     let precio = frmAltaPropiedad.AltaPropiedadPrecio.value;
     let tipoPropiedad = frmAltaPropiedad.AltaPropiedadTipo.value;
-    let imagen = frmAltaPropiedad.AltaPropiedadImagen.value;
+    // let imagen = frmAltaPropiedad.AltaPropiedadImagen.files[0];
 
     if (validarAltaPropiedad(precio)) {
-        let respuesta = await oPropiedad.altaPropiedad(new Propiedad(null, direccion, precio, tipoPropiedad, imagen));
+        let respuesta = await oPropiedad.altaPropiedad(new Propiedad(null, direccion, precio, tipoPropiedad));
         alert(respuesta.mensaje);
 
         if (!respuesta.error) {

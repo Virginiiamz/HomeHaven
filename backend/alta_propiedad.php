@@ -3,9 +3,9 @@ include_once("config.php");
 $conexion = obtenerConexion();
 
 // Recoger datos
-$componente = json_decode($_POST['componente']);
+$propiedad = json_decode($_POST['propiedad']);
 
-$sql = "INSERT INTO componente VALUES(null, '$componente->nombre' , '$componente->descripcion', $componente->precio, $componente->idtipo ); ";
+$sql = "INSERT INTO propiedad VALUES(null, '$propiedad->direccion' , $propiedad->precio, '$propiedad->tipovivienda', '$propiedad->imagen' ); ";
 
 mysqli_query($conexion, $sql);
 
@@ -17,6 +17,6 @@ if (mysqli_errno($conexion) != 0) {
 
 } else {
     // Prototipo responder($datos,$error,$mensaje,$conexion)
-    responder(null, false, "Se ha dado de alta el componente", $conexion);
+    responder(null, false, "Se ha dado de alta a la propiedad", $conexion);
 }
 ?>

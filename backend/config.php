@@ -13,7 +13,7 @@ $basedatos = array(
     "usuario" => "root",
     "password" => "test",
     "servidor" => "db",
-    "puerto" => 3306
+    "puerto" => 8000
 );
 
 

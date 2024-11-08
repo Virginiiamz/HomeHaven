@@ -73,5 +73,6 @@ async function peticionPOST(url, parametros){
        };
    }
 
+   alert(response.mensaje);
    return response;
 }

@@ -6,14 +6,14 @@ class Propiedad {
     #direccion;
     #precio;
     #tipovivienda;
-    #imagen; 
+    // #imagen; 
 
-    constructor(idpropiedad, direccion, precio, tipovivienda, imagen) {
+    constructor(idpropiedad, direccion, precio, tipovivienda) {
         this.#idpropiedad = idpropiedad;
         this.#direccion = direccion;
         this.#precio = precio;
         this.#tipovivienda = tipovivienda;
-        this.#imagen = imagen;
+        // this.#imagen = imagen;
     }
 
     get idpropiedad() {
@@ -48,20 +48,22 @@ class Propiedad {
         this.#tipovivienda = value;
     }
 
-    get imagen() {
-        return this.#imagen;
-    }
+    // get imagen() {
+    //     return this.#imagen;
+    // }
 
-    set imagen(value) {
-        this.#imagen = value;
-    }
+    // set imagen(value) {
+    //     this.#imagen = value;
+    // }
 
     async altaPropiedad(oPropiedad) {
         let datos = new FormData();
 
         datos.append("propiedad", JSON.stringify(oPropiedad));
 
-        let respuesta = await peticionPost()
+        let respuesta = await peticionPOST("alta_propiedad.php", datos);
+
+        return respuesta;
 
     }
 
