@@ -19,7 +19,6 @@ async function procesarAltaPropiedad() {
 
     if (validarAltaPropiedad()) {
         let respuesta = await oInmobiliaria.altaPropiedad(new Propiedad(null, direccion, precio, tipoPropiedad, null));
-        alert(respuesta.mensaje);
 
         if (!respuesta.error) {
             frmAltaPropiedad.reset();
