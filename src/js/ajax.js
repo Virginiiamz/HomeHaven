@@ -51,21 +51,18 @@ async function peticionPOST(url, parametros) {
     // Creamos el objeto URL que contiene la dirección url de la petición
     // y los datos que enviamos con la petición
     let oURL = new URL(rutaBackend);
-    oURL.pathname += url; // por ejemplo "alta_tipo.php"
+    oURL.pathname += url; // por ejemplo "alta_tipo.php"    
 
     let respuestaServidor = await fetch(oURL, {
         method: 'POST',
-        body: parametros,  // objeto FormData
-        headers: {
-            "Content-Type": "application/json" // Indicamos que estamos enviando JSON
-        }
+        body: parametros  // objeto FormData
     });
     let response;
 
     if (respuestaServidor.ok) {  // Si es una respuesta http OK (200)
 
         //! NO RECOGE LOS DATOS
-        response = respuestaServidor.json();
+        response = await respuestaServidor.json();
         
         console.log(response);
         
