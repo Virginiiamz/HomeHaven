@@ -103,3 +103,33 @@ async function procesarListadoPorPropiedad() {
     document.querySelector("#modificarPropiedad").addEventListener('click', procesarBotonEditarPropiedad);
 
 }
+
+function procesarBotonEditarPropiedad(oEvento) {
+    alert("has pulsado el boton modificar con id: " + oEvento.target.parentElement);
+    // let boton = null;
+
+    // // Verificamos si han hecho clic sobre el botón o el icono
+    // if (oEvento.target.nodeName == "I" || oEvento.target.nodeName == "button") {
+    //     if (oEvento.target.nodeName == "I") {
+    //         // Pulsacion sobre el icono
+    //         boton = oEvento.target.parentElement; // El padre es el boton
+    //     } else {
+    //         boton = oEvento.target;
+    //     }
+
+    //     // 1.Ocultar todos los formularios
+    //     ocultarFormularios();
+    //     // 2.Mostrar el formulario de modificación de componentes
+    //     frmModificarComponente.style.display = "block";
+    //     // 3. Rellenar los datos de este formulario con los del componente
+    //     let componente = JSON.parse(boton.dataset.componente);
+
+    //     frmModificarComponente.txtModIdComponente.value = componente.idcomponente;
+    //     frmModificarComponente.txtModNombre.value = componente.nombre;
+    //     frmModificarComponente.txtModDescripcion.value = componente.descripcion;
+    //     frmModificarComponente.txtModPrecio.value = componente.precio;
+    //     actualizarDesplegableTipos(componente.idtipo);
+
+
+    // }
+}
