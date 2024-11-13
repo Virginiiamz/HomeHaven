@@ -5,6 +5,7 @@ var oInmobiliaria = new Inmobiliaria();
 registrarEventos();
 
 function registrarEventos() {
+    ocultarFormulario();
 
     document.querySelector("#mnuAltaPropiedad").addEventListener("click", mostrarFormulario);
 
@@ -14,13 +15,14 @@ function registrarEventos() {
 
 function mostrarFormulario(oEvento) {
 
-    let opcion = oEvento.target.id;
+    let opcion = oEvento.target.id; 
 
     ocultarFormulario();
 
     switch (opcion) {
         case "mnuAltaPropiedad":
             frmAltaPropiedad.style.display = "block";
+           
             break;
 
         default:
