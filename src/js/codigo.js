@@ -11,6 +11,7 @@ function registrarEventos() {
     document.querySelector("#mnuListadoPropiedad").addEventListener("click", mostrarFormulario);
 
     frmAltaPropiedad.AltaPropiedadBoton.addEventListener("click", procesarAltaPropiedad);
+    frmModPropiedad.ModPropiedadBoton.addEventListener("click", procesarModificarPropiedad);
 
 }
 
@@ -123,12 +124,60 @@ function procesarBotonEditarPropiedad(oEvento) {
         if (boton.classList.contains("modificarPropiedad")) {
             frmModPropiedad.style.display = "block";
 
+            frmModPropiedad.ModPropiedadId.value = propiedad.idpropiedad;
             frmModPropiedad.ModPropiedadDireccion.value = propiedad.direccion;
             frmModPropiedad.ModPropiedadPrecio.value = propiedad.precio;
             frmModPropiedad.ModPropiedadTipo.value = propiedad.tipovivienda;
+            frmModPropiedad.ModPropiedadImagen.value = propiedad.imagen;
 
         } else if(boton.classList.contains("eliminarPropiedad")) {
             
         }
     }
+}
+
+async function procesarModificarPropiedad() {
+    
+    let idpropiedad = parseInt(frmModPropiedad.ModPropiedadId.value);
+    let direccion = frmModPropiedad.ModPropiedadDireccion.value.trim();
+    let precio = parseFloat(frmModPropiedad.ModPropiedadPrecio.value);
+    let tipovivienda = frmModPropiedad.ModPropiedadTipo.value;
+    let imagen = frmModPropiedad.ModPropiedadImagen.value;
+    
+    // Validar datos del formulario
+    if (validarModificarPropiedad()) {
+        let propiedad = new Propiedad(idpropiedad, direccion, precio, tipovivienda, imagen);
+        
+        let respuesta = await oInmobiliaria.modificarPropiedad(propiedad);
+
+        alert(respuesta.mensaje);
+
+        if (!respuesta.error) { // Si NO hay error
+            //Resetear formulario
+            frmModPropiedad.reset();
+            // Ocultar el formulario
+            frmModPropiedad.style.display = "none";
+        }
+
+    }
+
+}
+
+function validarModificarPropiedad() {
+
+    let precio = frmModPropiedad.ModPropiedadPrecio.value;
+
+    let valido = true;
+    let errores = "";
+
+    if (precio < 0) {
+        errores += "El precio tiene que ser positivo";
+        valido = false;
+    }
+
+    if (!valido) {
+        alert(errores);
+    }
+
+    return valido;
 }

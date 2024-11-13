@@ -24,6 +24,19 @@ class Inmobiliaria {
 
     }
 
+    async modificarPropiedad(oPropiedad) {
+        let datos = new FormData();
+
+        // Se podría pasar campo a campo al servidor
+        // pero en esta ocasión vamos a pasar todos los datos 
+        // en un solo parámetro cuyos datos van en formato JSON
+        datos.append("propiedad",JSON.stringify(oPropiedad));
+       
+        let respuesta = await peticionPOST("modificar_propiedad.php", datos);
+
+        return respuesta;
+    }
+
     async getPropiedad() {
         let datos = new FormData();
 
