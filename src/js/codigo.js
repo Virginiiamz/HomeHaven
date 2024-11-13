@@ -13,6 +13,7 @@ function registrarEventos() {
 
     frmAltaPropiedad.AltaPropiedadBoton.addEventListener("click", procesarAltaPropiedad);
     frmModPropiedad.ModPropiedadBoton.addEventListener("click", procesarModificarPropiedad);
+    frmBuscarPropiedad.ModPropiedadBoton.addEventListener("click", procesarBuscarPropiedad);
 
 }
 
@@ -44,6 +45,7 @@ function ocultarFormulario() {
     listadoPropiedad.style.display = "none";
     frmModPropiedad.style.display = "none";
     frmBuscarPropiedad.style.display = "none";
+    resultadoBusquedaPropiedad.innerHTML = "";
 }
 
 async function procesarAltaPropiedad() {
@@ -134,24 +136,24 @@ function procesarBotonEditarPropiedad(oEvento) {
             frmModPropiedad.ModPropiedadTipo.value = propiedad.tipovivienda;
             frmModPropiedad.ModPropiedadImagen.value = propiedad.imagen;
 
-        } else if(boton.classList.contains("eliminarPropiedad")) {
+        } else if (boton.classList.contains("eliminarPropiedad")) {
             borrarPropiedad(propiedad);
         }
     }
 }
 
 async function procesarModificarPropiedad() {
-    
+
     let idpropiedad = parseInt(frmModPropiedad.ModPropiedadId.value);
     let direccion = frmModPropiedad.ModPropiedadDireccion.value.trim();
     let precio = parseFloat(frmModPropiedad.ModPropiedadPrecio.value);
     let tipovivienda = frmModPropiedad.ModPropiedadTipo.value;
     let imagen = frmModPropiedad.ModPropiedadImagen.value;
-    
+
     // Validar datos del formulario
     if (validarModificarPropiedad()) {
         let propiedad = new Propiedad(idpropiedad, direccion, precio, tipovivienda, imagen);
-        
+
         let respuesta = await oInmobiliaria.modificarPropiedad(propiedad);
 
         alert(respuesta.mensaje);
@@ -197,4 +199,33 @@ async function borrarPropiedad(oEvento) {
         document.querySelector("#listadoPropiedad").addEventListener("load", location.reload());
     }
 
+}
+
+async function procesarBuscarPropiedad() {
+    let precioPropiedad = parseFloat(frmBuscarPropiedad.buscarPropiedadPrecio.value.trim());
+
+    let respuesta = await oInmobiliaria.buscarPropiedad(precioPropiedad);
+
+    if (!respuesta.error) { // Si NO hay error
+        let resultadoBusqueda = document.querySelector("#resultadoBusquedaPropiedad");
+
+        // Escribimos resultado
+        let tablaSalida = "<table class='table'>";
+        tablaSalida += "<thead><tr><th>IDPROPIEDAD</th><th>DIRECCION</th><th>PRECIO</th><th>TIPOVIVIENDA</th><th>IMAGEN</th></tr></thead>";
+        tablaSalida += "<tbody><tr>";
+        tablaSalida += "<td>" + respuesta.datos.idpropiedad + "</td>"
+        tablaSalida += "<td>" + respuesta.datos.direccion + "</td>"
+        tablaSalida += "<td>" + respuesta.datos.precio + "</td>"
+        tablaSalida += "<td>" + respuesta.datos.tipovivienda + "</td>"
+        tablaSalida += "<td>" + respuesta.datos.imagen + "</td>"
+        tablaSalida += "</tr></tbody></table>";
+
+        resultadoBusqueda.innerHTML = tablaSalida;
+        resultadoBusqueda.style.display = 'block';
+
+        frmBuscarPropiedad.reset();
+
+    } else { // Si hay error
+        alert(respuesta.mensaje);
+    }
 }

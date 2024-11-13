@@ -47,6 +47,16 @@ class Inmobiliaria {
         return respuesta;
     }
 
+    async buscarPropiedad(precioPropiedad) {
+        let datos = new FormData();
+
+        datos.append("precio", precioPropiedad);
+
+        let respuesta = await peticionPOST("buscar_propiedad.php", datos);
+
+        return respuesta;
+    }
+
     async listadoPropiedad(){
         let datos = new FormData();
 
