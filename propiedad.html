@@ -35,9 +35,9 @@
                             <a class="nav-link dropdown-toggle fs-5 p-2" data-bs-toggle="dropdown" role="button"
                                 aria-expanded="false" id="enlaceNav" href="#">Propiedades</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Listado de propiedades</a></li>
-                                <li><a class="dropdown-item" href="#">Dar alta a una propiedad</a></li>
-                                <li><a class="dropdown-item" href="#">Buscar una propiedad</a></li>
+                                <li><a class="dropdown-item" href="#" id="mnuListadoPropiedad">Listado de propiedades</a></li>
+                                <li><a class="dropdown-item" href="#" id="mnuAltaPropiedad">Dar alta a una propiedad</a></li>
+                                <li><a class="dropdown-item" href="#" id="mnuBuscarPropiedad">Buscar una propiedad</a></li>
                             </ul>
                         </li>
                         <li
@@ -45,9 +45,9 @@
                             <a class="nav-link dropdown-toggle fs-5 p-2" data-bs-toggle="dropdown" role="button"
                                 aria-expanded="false" id="enlaceNav" href="#">Contratos</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Listado de contratos</a></li>
-                                <li><a class="dropdown-item" href="#">Dar alta a un contrato</a></li>
-                                <li><a class="dropdown-item" href="#">Buscar un contrato</a></li>
+                                <li><a class="dropdown-item" href="#" id="mnuListadoContratos">Listado de contratos</a></li>
+                                <li><a class="dropdown-item" href="#" id="mnuAltaContrato">Dar alta a un contrato</a></li>
+                                <li><a class="dropdown-item" href="#" id="mnuBuscarContrato">Buscar un contrato</a></li>
                             </ul>
                         </li>
                         <li
@@ -55,9 +55,9 @@
                             <a class="nav-link dropdown-toggle fs-5 p-2" data-bs-toggle="dropdown" role="button"
                                 aria-expanded="false" id="enlaceNav" href="#">Clientes</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Listado de clientes</a></li>
-                                <li><a class="dropdown-item" href="#">Dar alta a un cliente</a></li>
-                                <li><a class="dropdown-item" href="#">Buscar un cliente</a></li>
+                                <li><a class="dropdown-item" href="#" id="mnuListadoClientes">Listado de clientes</a></li>
+                                <li><a class="dropdown-item" href="#" id="mnuAltaClientes">Dar alta a un cliente</a></li>
+                                <li><a class="dropdown-item" href="#" id="mnuBuscarClientes">Buscar un cliente</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -68,10 +68,44 @@
     </header>
 
     <main class="min-vh-100">
-        <div class="d-flex gap-2 gap-sm-0 flex-sm-row justify-content-between align-items-center m-2">
-            <h2 class="m-1">Listado de Propiedades</h2>
-            <a href="crearPropiedades.html" class="btnDarAlta fs-5"><i
-                    class="bi bi-plus-square-fill me-2"></i>Añadir</a>
+        <div class="m-2">
+            <div class="row" id="listadoPropiedad"></div>
+
+            <section class="row m-3">
+                <h2 class="m-1">Dar de alta a una propiedad</h2>
+                <form class="" id="frmAltaPropiedad" name="frmAltaPropiedad">
+                    <div class="mb-3">
+                        <label for="AltaPropiedadDireccion" class="form-label">Dirección: </label>
+                        <input type="text" class="form-control" id="AltaPropiedadDireccion"
+                            name="AltaPropiedadDireccion" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="AltaPropiedadPrecio" class="form-label">Precio: </label>
+                        <input type="number" class="form-control" id="AltaPropiedadPrecio" name="AltaPropiedadPrecio"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="AltaPropiedadTipo" class="form-label">Tipo de propiedad: </label>
+                        <select class="form-select" id="AltaPropiedadTipo" name="AltaPropiedadTipo" required>
+                            <option selected value="">Seleccione una opción...</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Piso">Piso</option>
+                            <option value="Apartamento">Apartamento</option>
+                            <option value="Solar">Solar</option>
+                            <option value="Habitacion">Habitación</option>
+                            <option value="Garaje">Garaje</option>
+                            <option value="Trastero">Trastero</option>
+                            <option value="Oficina">Oficina</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="AltaPropiedadImagen" class="form-label">Imagen: </label>
+                        <input type="file" class="form-control" id="AltaPropiedadImagen" name="AltaPropiedadImagen">
+                    </div>
+                    <button type="button" class="btnDarAlta" id="AltaPropiedadBoton"
+                        name="AltaPropiedadBoton">Registrar</button>
+                </form>
+            </section>
         </div>
     </main>
 
@@ -97,6 +131,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"
         defer></script>
+    <script src="src/js/ajax.js"></script>
+    <script src="src/js/objetos.js"></script>
+    <script src="src/js/codigo.js"></script>
 </body>
 
 </html>
