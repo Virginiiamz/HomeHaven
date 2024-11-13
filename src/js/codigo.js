@@ -38,6 +38,7 @@ function mostrarFormulario(oEvento) {
 function ocultarFormulario() {
     frmAltaPropiedad.style.display = "none";
     listadoPropiedad.style.display = "none";
+    frmModPropiedad.style.display = "none";
 }
 
 async function procesarAltaPropiedad() {
@@ -92,7 +93,7 @@ async function procesarListadoPorPropiedad() {
         tabla += "<td>" + propiedad.tipovivienda + "</td>";
         tabla += "<td>" + propiedad.imagen + "</td>";
 
-        tabla += "<td><button class='btn btn-primary' id='modificarPropiedad' data-componente='" + JSON.stringify(propiedad) + "'><i class='bi bi-pencil-square'></i></button><button class='btn btn-danger ms-3' id='eliminarPropiedad' data-componente='" + JSON.stringify(propiedad) + "'><i class='bi bi-trash'></i></button></td></tr>";
+        tabla += "<td><button class='btn btn-primary modificarPropiedad' data-componente='" + JSON.stringify(propiedad) + "'><i class='bi bi-pencil-square'></i></button><button class='btn btn-danger ms-3 eliminarPropiedad' data-componente='" + JSON.stringify(propiedad) + "'><i class='bi bi-trash'></i></button></td></tr>";
     }
 
     tabla += "</tbody></table>";
@@ -100,36 +101,27 @@ async function procesarListadoPorPropiedad() {
     // Agregamos el contenido a la capa de listados
     document.querySelector("#listadoPropiedad").innerHTML = tabla;
     // Agregar manejador de evento para toda la tabla
-    document.querySelector("#modificarPropiedad").addEventListener('click', procesarBotonEditarPropiedad);
+    document.querySelector("#listadoPorPropiedad").addEventListener("click", (event) => {
+        if (event.target.closest(".modificarPropiedad")) { //si el icono pulsado es el de modificar, ejecuta la funcion
+            procesarBotonEditarPropiedad(event);
+        }
+    });
 
 }
 
-function procesarBotonEditarPropiedad(oEvento) {
-    alert("has pulsado el boton modificar con id: " + oEvento.target.parentElement);
-    // let boton = null;
+function procesarBotonEditarPropiedad(event) {
+    // alert("has pulsado el boton modificar con id: " + oEvento.target.dataset.propiedad);
+    console.log(event.target.closest(".modificarPropiedad").dataset.propiedad);
+    
 
-    // // Verificamos si han hecho clic sobre el botón o el icono
-    // if (oEvento.target.nodeName == "I" || oEvento.target.nodeName == "button") {
-    //     if (oEvento.target.nodeName == "I") {
-    //         // Pulsacion sobre el icono
-    //         boton = oEvento.target.parentElement; // El padre es el boton
-    //     } else {
-    //         boton = oEvento.target;
-    //     }
+    frmModPropiedad.style.display = "block";
+    let propiedad = JSON.parse(event.target.closest(".modificarPropiedad").dataset.propiedad);
+    console.log(propiedad);
+    
 
-    //     // 1.Ocultar todos los formularios
-    //     ocultarFormularios();
-    //     // 2.Mostrar el formulario de modificación de componentes
-    //     frmModificarComponente.style.display = "block";
-    //     // 3. Rellenar los datos de este formulario con los del componente
-    //     let componente = JSON.parse(boton.dataset.componente);
+    frmModPropiedad.ModPropiedadDireccion.value = propiedad.direccion;
+    frmModPropiedad.ModPropiedadPrecio.value = propiedad.precio;
+    frmModPropiedad.ModPropiedadTipo.value = propiedad.tipovivienda;
 
-    //     frmModificarComponente.txtModIdComponente.value = componente.idcomponente;
-    //     frmModificarComponente.txtModNombre.value = componente.nombre;
-    //     frmModificarComponente.txtModDescripcion.value = componente.descripcion;
-    //     frmModificarComponente.txtModPrecio.value = componente.precio;
     //     actualizarDesplegableTipos(componente.idtipo);
-
-
-    // }
 }
