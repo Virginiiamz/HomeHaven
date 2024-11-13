@@ -35,9 +35,12 @@
                             <a class="nav-link dropdown-toggle fs-5 p-2" data-bs-toggle="dropdown" role="button"
                                 aria-expanded="false" id="enlaceNav" href="#">Propiedades</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" id="mnuListadoPropiedad">Listado de propiedades</a></li>
-                                <li><a class="dropdown-item" href="#" id="mnuAltaPropiedad">Dar alta a una propiedad</a></li>
-                                <li><a class="dropdown-item" href="#" id="mnuBuscarPropiedad">Buscar una propiedad</a></li>
+                                <li><a class="dropdown-item" href="#" id="mnuListadoPropiedad">Listado de
+                                        propiedades</a></li>
+                                <li><a class="dropdown-item" href="#" id="mnuAltaPropiedad">Dar alta a una propiedad</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#" id="mnuBuscarPropiedad">Buscar una propiedad</a>
+                                </li>
                             </ul>
                         </li>
                         <li
@@ -45,8 +48,10 @@
                             <a class="nav-link dropdown-toggle fs-5 p-2" data-bs-toggle="dropdown" role="button"
                                 aria-expanded="false" id="enlaceNav" href="#">Contratos</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" id="mnuListadoContratos">Listado de contratos</a></li>
-                                <li><a class="dropdown-item" href="#" id="mnuAltaContrato">Dar alta a un contrato</a></li>
+                                <li><a class="dropdown-item" href="#" id="mnuListadoContratos">Listado de contratos</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#" id="mnuAltaContrato">Dar alta a un contrato</a>
+                                </li>
                                 <li><a class="dropdown-item" href="#" id="mnuBuscarContrato">Buscar un contrato</a></li>
                             </ul>
                         </li>
@@ -55,8 +60,10 @@
                             <a class="nav-link dropdown-toggle fs-5 p-2" data-bs-toggle="dropdown" role="button"
                                 aria-expanded="false" id="enlaceNav" href="#">Clientes</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" id="mnuListadoClientes">Listado de clientes</a></li>
-                                <li><a class="dropdown-item" href="#" id="mnuAltaClientes">Dar alta a un cliente</a></li>
+                                <li><a class="dropdown-item" href="#" id="mnuListadoClientes">Listado de clientes</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#" id="mnuAltaClientes">Dar alta a un cliente</a>
+                                </li>
                                 <li><a class="dropdown-item" href="#" id="mnuBuscarClientes">Buscar un cliente</a></li>
                             </ul>
                         </li>
@@ -112,8 +119,8 @@
                     <input type="hidden" name="ModPropiedadId" id="ModPropiedadId">
                     <div class="mb-3">
                         <label for="ModPropiedadDireccion" class="form-label">Dirección: </label>
-                        <input type="text" class="form-control" id="ModPropiedadDireccion"
-                            name="ModPropiedadDireccion" required>
+                        <input type="text" class="form-control" id="ModPropiedadDireccion" name="ModPropiedadDireccion"
+                            required>
                     </div>
                     <div class="mb-3">
                         <label for="ModPropiedadPrecio" class="form-label">Precio: </label>
@@ -140,9 +147,24 @@
                 </form>
             </section>
 
+            <section class="row m-3">
+                <form action="" id="frmBuscarPropiedad" name="frmBuscarPropiedad">
+                    <div class="mb-3">
+                        <label for="buscarPropiedadPrecio" class="form-label">Introduce un precio: </label>
+                        <input type="number" class="form-control" name="buscarPropiedadPrecio" id="buscarPropiedadPrecio">
+                    </div>
+                    <div class="mb-3">
+                        <label for="buscarPropiedadDireccion" class="form-label">Introduce una direccion: </label>
+                        <input type="text" class="form-control" name="buscarPropiedadDireccion" id="buscarPropiedadDireccion">
+                    </div>
+                    <button type="button" class="btnDarAlta" id="ModPropiedadBoton"
+                        name="ModPropiedadBoton">Buscar</button>
+                </form>
+            </section>
+
             <div class="container" id="resultadoBusquedaPropiedad"></div>
             <div class="row m-3" id="listadoPropiedad">
-                
+
             </div>
         </div>
     </main>
