@@ -40,10 +40,10 @@ async function procesarAltaPropiedad() {
     let direccion = frmAltaPropiedad.AltaPropiedadDireccion.value.trim();
     let precio = parseFloat(frmAltaPropiedad.AltaPropiedadPrecio.value);
     let tipoPropiedad = frmAltaPropiedad.AltaPropiedadTipo.value;
-    // let imagen = frmAltaPropiedad.AltaPropiedadImagen.files[0];
+    let imagen = frmAltaPropiedad.AltaPropiedadImagen.value;
 
     if (validarAltaPropiedad()) {
-        let respuesta = await oInmobiliaria.altaPropiedad(new Propiedad(null, direccion, precio, tipoPropiedad, null));
+        let respuesta = await oInmobiliaria.altaPropiedad(new Propiedad(null, direccion, precio, tipoPropiedad, imagen));
 
         if (!respuesta.error) {
             frmAltaPropiedad.reset();

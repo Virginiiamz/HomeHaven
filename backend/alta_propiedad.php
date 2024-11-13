@@ -6,7 +6,7 @@ $conexion = obtenerConexion();
 // $input = file_get_contents("php://input");
 $propiedad = json_decode($_POST['propiedad']);
 
-$sql = "INSERT INTO propiedad (idpropiedad, direccion, precio, tipovivienda, imagen) VALUES (null, '$propiedad->direccion' , $propiedad->precio, '$propiedad->tipovivienda', null);";
+$sql = "INSERT INTO propiedad (idpropiedad, direccion, precio, tipovivienda, imagen) VALUES (null, '$propiedad->direccion' , $propiedad->precio, '$propiedad->tipovivienda', '$propiedad->imagen');";
 
 mysqli_query($conexion, $sql);
 
