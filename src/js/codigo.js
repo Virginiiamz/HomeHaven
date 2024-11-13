@@ -93,7 +93,7 @@ async function procesarListadoPorPropiedad() {
         tabla += "<td>" + propiedad.tipovivienda + "</td>";
         tabla += "<td>" + propiedad.imagen + "</td>";
 
-        tabla += "<td><button class='btn btn-primary modificarPropiedad' data-componente='" + JSON.stringify(propiedad) + "'><i class='bi bi-pencil-square'></i></button><button class='btn btn-danger ms-3 eliminarPropiedad' data-componente='" + JSON.stringify(propiedad) + "'><i class='bi bi-trash'></i></button></td></tr>";
+        tabla += "<td><button class='btn btn-primary modificarPropiedad' data-propiedad='" + JSON.stringify(propiedad) + "'><i class='bi bi-pencil-square'></i></button><button class='btn btn-danger ms-3 eliminarPropiedad' data-propiedad='" + JSON.stringify(propiedad) + "'><i class='bi bi-trash'></i></button></td></tr>";
     }
 
     tabla += "</tbody></table>";
@@ -101,27 +101,34 @@ async function procesarListadoPorPropiedad() {
     // Agregamos el contenido a la capa de listados
     document.querySelector("#listadoPropiedad").innerHTML = tabla;
     // Agregar manejador de evento para toda la tabla
-    document.querySelector("#listadoPorPropiedad").addEventListener("click", (event) => {
-        if (event.target.closest(".modificarPropiedad")) { //si el icono pulsado es el de modificar, ejecuta la funcion
-            procesarBotonEditarPropiedad(event);
-        }
-    });
+    document.querySelector("#listadoPorPropiedad").addEventListener("click", procesarBotonEditarPropiedad)
 
 }
 
-function procesarBotonEditarPropiedad(event) {
-    // alert("has pulsado el boton modificar con id: " + oEvento.target.dataset.propiedad);
-    console.log(event.target.closest(".modificarPropiedad").dataset.propiedad);
-    
+function procesarBotonEditarPropiedad(oEvento) {
 
-    frmModPropiedad.style.display = "block";
-    let propiedad = JSON.parse(event.target.closest(".modificarPropiedad").dataset.propiedad);
-    console.log(propiedad);
-    
+    let boton = null;
 
-    frmModPropiedad.ModPropiedadDireccion.value = propiedad.direccion;
-    frmModPropiedad.ModPropiedadPrecio.value = propiedad.precio;
-    frmModPropiedad.ModPropiedadTipo.value = propiedad.tipovivienda;
+    // Verificamos si han hecho clic sobre el botón o el icono
+    if (oEvento.target.nodeName == "I" || oEvento.target.nodeName == "button") {
+        if (oEvento.target.nodeName == "I") {
+            // Pulsacion sobre el icono
+            boton = oEvento.target.parentElement; // El padre es el boton
+        } else {
+            boton = oEvento.target;
+        }
 
-    //     actualizarDesplegableTipos(componente.idtipo);
+        let propiedad = JSON.parse(boton.dataset.propiedad);
+
+        if (boton.classList.contains("modificarPropiedad")) {
+            frmModPropiedad.style.display = "block";
+
+            frmModPropiedad.ModPropiedadDireccion.value = propiedad.direccion;
+            frmModPropiedad.ModPropiedadPrecio.value = propiedad.precio;
+            frmModPropiedad.ModPropiedadTipo.value = propiedad.tipovivienda;
+
+        } else if(boton.classList.contains("eliminarPropiedad")) {
+            
+        }
+    }
 }
