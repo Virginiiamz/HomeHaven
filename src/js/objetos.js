@@ -23,4 +23,20 @@ class Inmobiliaria {
         return respuesta;
 
     }
+
+    async getPropiedad() {
+        let datos = new FormData();
+
+        let respuesta = await peticionGET("get_propiedad.php", datos);
+
+        return respuesta;
+    }
+
+    async listadoPropiedad(){
+        let datos = new FormData();
+
+        let respuesta = await peticionGET("get_propiedad.php", datos);
+
+        return respuesta;
+    }
 }

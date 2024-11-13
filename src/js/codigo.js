@@ -8,6 +8,7 @@ function registrarEventos() {
     ocultarFormulario();
 
     document.querySelector("#mnuAltaPropiedad").addEventListener("click", mostrarFormulario);
+    document.querySelector("#mnuListadoPropiedad").addEventListener("click", mostrarFormulario);
 
     frmAltaPropiedad.AltaPropiedadBoton.addEventListener("click", procesarAltaPropiedad);
 
@@ -15,14 +16,17 @@ function registrarEventos() {
 
 function mostrarFormulario(oEvento) {
 
-    let opcion = oEvento.target.id; 
+    let opcion = oEvento.target.id;
 
     ocultarFormulario();
 
     switch (opcion) {
         case "mnuAltaPropiedad":
             frmAltaPropiedad.style.display = "block";
-           
+            break;
+        case "mnuListadoPropiedad":
+            listadoPropiedad.style.display = "block";
+            procesarListadoPorPropiedad();
             break;
 
         default:
@@ -33,6 +37,7 @@ function mostrarFormulario(oEvento) {
 
 function ocultarFormulario() {
     frmAltaPropiedad.style.display = "none";
+    listadoPropiedad.style.display = "none";
 }
 
 async function procesarAltaPropiedad() {
@@ -69,4 +74,32 @@ function validarAltaPropiedad() {
     }
 
     return valido;
+}
+
+async function procesarListadoPorPropiedad() {
+
+    let respuesta = await oInmobiliaria.listadoPropiedad();
+
+    let tabla = "<h2>Listado de propiedades</h2>";
+
+    tabla += "<table class='table table-striped' id='listadoPorPropiedad'>";
+    tabla += "<thead><tr><th>ID</th><th>DIRECCION</th><th>PRECIO</th><th>TIPOVIVIENDA</th><th>IMAGEN</th><th colspan='2'>ACCION</th></tr></thead><tbody>";
+
+    for (let propiedad of respuesta.datos) {
+        tabla += "<tr><td>" + propiedad.idpropiedad + "</td>";
+        tabla += "<td>" + propiedad.direccion + "</td>";
+        tabla += "<td>" + propiedad.precio + "</td>";
+        tabla += "<td>" + propiedad.tipovivienda + "</td>";
+        tabla += "<td>" + propiedad.imagen + "</td>";
+
+        tabla += "<td><button class='btn btn-primary' id='modificarPropiedad' data-componente='" + JSON.stringify(propiedad) + "'><i class='bi bi-pencil-square'></i></button><button class='btn btn-danger ms-3' id='eliminarPropiedad' data-componente='" + JSON.stringify(propiedad) + "'><i class='bi bi-trash'></i></button></td></tr>";
+    }
+
+    tabla += "</tbody></table>";
+
+    // Agregamos el contenido a la capa de listados
+    document.querySelector("#listadoPropiedad").innerHTML = tabla;
+    // Agregar manejador de evento para toda la tabla
+    document.querySelector("#modificarPropiedad").addEventListener('click', procesarBotonEditarPropiedad);
+
 }
