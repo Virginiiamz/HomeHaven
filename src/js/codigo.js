@@ -9,6 +9,7 @@ function registrarEventos() {
 
     document.querySelector("#mnuAltaPropiedad").addEventListener("click", mostrarFormulario);
     document.querySelector("#mnuListadoPropiedad").addEventListener("click", mostrarFormulario);
+    document.querySelector("#mnuBuscarPropiedad").addEventListener("click", mostrarFormulario)
 
     frmAltaPropiedad.AltaPropiedadBoton.addEventListener("click", procesarAltaPropiedad);
     frmModPropiedad.ModPropiedadBoton.addEventListener("click", procesarModificarPropiedad);
@@ -29,7 +30,9 @@ function mostrarFormulario(oEvento) {
             listadoPropiedad.style.display = "block";
             procesarListadoPorPropiedad();
             break;
-
+        case "mnuBuscarPropiedad":
+            frmBuscarPropiedad.style.display = "block";
+            break;
         default:
             break;
     }
@@ -40,6 +43,7 @@ function ocultarFormulario() {
     frmAltaPropiedad.style.display = "none";
     listadoPropiedad.style.display = "none";
     frmModPropiedad.style.display = "none";
+    frmBuscarPropiedad.style.display = "none";
 }
 
 async function procesarAltaPropiedad() {
