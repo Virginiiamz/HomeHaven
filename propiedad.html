@@ -69,7 +69,9 @@
 
     <main class="min-vh-100">
         <div class="m-2">
-            <div class="row" id="listadoPropiedad"></div>
+            <div class="row m-3" id="listadoPropiedad">
+                
+            </div>
 
             <section class="row m-3">
                 <form class="form" id="frmAltaPropiedad" name="frmAltaPropiedad">
@@ -104,6 +106,38 @@
                     </div>
                     <button type="button" class="btnDarAlta" id="AltaPropiedadBoton"
                         name="AltaPropiedadBoton">Registrar</button>
+                </form>
+            </section>
+
+            <section class="row m-3">
+                <form class="form" id="frmModPropiedad" name="frmModPropiedad">
+                    <h2 class="m-1">Modificar una propiedad</h2>
+                    <div class="mb-3">
+                        <label for="ModPropiedadDireccion" class="form-label">Dirección: </label>
+                        <input type="text" class="form-control" id="ModPropiedadDireccion"
+                            name="ModPropiedadDireccion" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ModPropiedadPrecio" class="form-label">Precio: </label>
+                        <input type="number" class="form-control" id="ModPropiedadPrecio" name="ModPropiedadPrecio"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ModPropiedadTipo" class="form-label">Tipo de propiedad: </label>
+                        <select class="form-select" id="ModPropiedadTipo" name="ModPropiedadTipo" required>
+                            <option selected value="">Seleccione una opción...</option>
+                            <option value="Casa">Casa</option>
+                            <option value="Piso">Piso</option>
+                            <option value="Apartamento">Apartamento</option>
+                            <option value="Solar">Solar</option>
+                            <option value="Habitacion">Habitación</option>
+                            <option value="Garaje">Garaje</option>
+                            <option value="Trastero">Trastero</option>
+                            <option value="Oficina">Oficina</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btnDarAlta" id="ModPropiedadBoton"
+                        name="ModPropiedadBoton">Modificar</button>
                 </form>
             </section>
         </div>
