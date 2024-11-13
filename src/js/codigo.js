@@ -131,7 +131,7 @@ function procesarBotonEditarPropiedad(oEvento) {
             frmModPropiedad.ModPropiedadImagen.value = propiedad.imagen;
 
         } else if(boton.classList.contains("eliminarPropiedad")) {
-            
+            borrarPropiedad(propiedad);
         }
     }
 }
@@ -180,4 +180,17 @@ function validarModificarPropiedad() {
     }
 
     return valido;
+}
+
+async function borrarPropiedad(oEvento) {
+
+    let respuesta = await oInmobiliaria.borrarPropiedad(oEvento.idpropiedad);
+
+    alert(respuesta.mensaje);
+
+    if (!respuesta.error) { // Si NO hay error
+        // Borrado de la tabla html
+        document.querySelector("#listadoPropiedad").addEventListener("load", location.reload());
+    }
+
 }

@@ -37,10 +37,12 @@ class Inmobiliaria {
         return respuesta;
     }
 
-    async getPropiedad() {
+    async borrarPropiedad(idpropiedad) {
         let datos = new FormData();
 
-        let respuesta = await peticionGET("get_propiedad.php", datos);
+        datos.append("idpropiedad", idpropiedad);
+
+        let respuesta = await peticionPOST("borrar_propiedad.php", datos);
 
         return respuesta;
     }
