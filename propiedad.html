@@ -14,61 +14,58 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
+            <div class="ms-lg-4 col-12 col-lg-1 d-flex justify-content-between">
+                <a class="navbar-brand" href="index.html"><img class="img-fluid logo" src="src/img/logo.png"
+                        alt="Logo"></a>
 
-                <div class="d-flex justify-content-between">
-                    <a class="navbar-brand" href="index.html"><img class="img-fluid logo" src="src/img/logo.png"
-                            alt="Logo"></a>
+                <button class="navbar-toggler me-2" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+            </div>
 
-                </div>
-
-                <div class="collapse navbar-collapse me-lg-4 mb-3 mb-lg-0 col-lg-11" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0 mt-2 mt-lg-0">
-                        <li
-                            class="nav-item dropdown d-inline-flex align-items-center justify-content-end justify-content-lg-start p-lg-2">
-                            <a class="nav-link dropdown-toggle fs-5 p-2" data-bs-toggle="dropdown" role="button"
-                                aria-expanded="false" id="enlaceNav" href="#">Propiedades</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" id="mnuListadoPropiedad">Listado de
-                                        propiedades</a></li>
-                                <li><a class="dropdown-item" href="#" id="mnuAltaPropiedad">Dar alta a una propiedad</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#" id="mnuBuscarPropiedad">Buscar una propiedad</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li
-                            class="nav-item dropdown d-inline-flex align-items-center justify-content-end justify-content-lg-start p-lg-2">
-                            <a class="nav-link dropdown-toggle fs-5 p-2" data-bs-toggle="dropdown" role="button"
-                                aria-expanded="false" id="enlaceNav" href="#">Contratos</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" id="mnuListadoContratos">Listado de contratos</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#" id="mnuAltaContrato">Dar alta a un contrato</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#" id="mnuBuscarContrato">Buscar un contrato</a></li>
-                            </ul>
-                        </li>
-                        <li
-                            class="nav-item dropdown d-inline-flex align-items-center justify-content-end justify-content-lg-start p-lg-2">
-                            <a class="nav-link dropdown-toggle fs-5 p-2" data-bs-toggle="dropdown" role="button"
-                                aria-expanded="false" id="enlaceNav" href="#">Clientes</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#" id="mnuListadoClientes">Listado de clientes</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#" id="mnuAltaClientes">Dar alta a un cliente</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#" id="mnuBuscarClientes">Buscar un cliente</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+            <div class="collapse navbar-collapse me-lg-4 mb-3 mb-lg-0 col-lg-11" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 mt-2 mt-lg-0">
+                    <li class="nav-item dropdown d-flex flex-row align-items-center m-1 justify-content-end p-lg-2">
+                        <a class="nav-link dropdown-toggle fs-5 p-2" data-bs-toggle="dropdown" aria-haspopup="true"
+                            role="button" aria-expanded="false" id="enlaceNav" href="#">Propiedades</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" id="mnuListadoPropiedad">Listado de
+                                    propiedades</a></li>
+                            <li><a class="dropdown-item" href="#" id="mnuAltaPropiedad">Dar alta a una propiedad</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#" id="mnuBuscarPropiedad">Buscar una propiedad</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li
+                        class="nav-item dropdown d-inline-flex align-items-center m-1 justify-content-end p-lg-2">
+                        <a class="nav-link dropdown-toggle fs-5 p-2" data-bs-toggle="dropdown" role="button"
+                            aria-expanded="false" id="enlaceNav" href="#">Contratos</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" id="mnuListadoContratos">Listado de contratos</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#" id="mnuAltaContrato">Dar alta a un contrato</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#" id="mnuBuscarContrato">Buscar un contrato</a></li>
+                        </ul>
+                    </li>
+                    <li
+                        class="nav-item dropdown d-inline-flex align-items-center m-1 justify-content-end p-lg-2">
+                        <a class="nav-link dropdown-toggle fs-5 p-2" data-bs-toggle="dropdown" role="button"
+                            aria-expanded="false" id="enlaceNav" href="#">Clientes</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" id="mnuListadoClientes">Listado de clientes</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#" id="mnuAltaClientes">Dar alta a un cliente</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#" id="mnuBuscarClientes">Buscar un cliente</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
             </div>
         </nav>
@@ -81,19 +78,16 @@
                 <form class="form" id="frmAltaPropiedad" name="frmAltaPropiedad">
                     <h2 class="m-1">Dar de alta a una propiedad</h2>
                     <div class="mb-3">
-                        <label for="AltaPropiedadDireccion" class="form-label">Dirección: </label>
                         <input type="text" class="form-control" id="AltaPropiedadDireccion"
-                            name="AltaPropiedadDireccion" required>
+                            name="AltaPropiedadDireccion" placeholder="Direccion" required>
                     </div>
                     <div class="mb-3">
-                        <label for="AltaPropiedadPrecio" class="form-label">Precio: </label>
                         <input type="number" class="form-control" id="AltaPropiedadPrecio" name="AltaPropiedadPrecio"
-                            required>
+                            placeholder="Precio" required>
                     </div>
                     <div class="mb-3">
-                        <label for="AltaPropiedadTipo" class="form-label">Tipo de propiedad: </label>
                         <select class="form-select" id="AltaPropiedadTipo" name="AltaPropiedadTipo" required>
-                            <option selected value="">Seleccione una opción...</option>
+                            <option selected value="">Tipo de propiedad...</option>
                             <option value="Casa">Casa</option>
                             <option value="Piso">Piso</option>
                             <option value="Apartamento">Apartamento</option>
@@ -105,8 +99,8 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="AltaPropiedadImagen" class="form-label">Imagen: </label>
-                        <input type="file" class="form-control" id="AltaPropiedadImagen" name="AltaPropiedadImagen">
+                        <input type="file" class="form-control" id="AltaPropiedadImagen" name="AltaPropiedadImagen"
+                            placeholder="Imagen">
                     </div>
                     <button type="button" class="btnDarAlta" id="AltaPropiedadBoton"
                         name="AltaPropiedadBoton">Registrar</button>
@@ -149,9 +143,9 @@
 
             <section class="m-3">
                 <form action="" id="frmBuscarPropiedad" name="frmBuscarPropiedad">
-                    <label for="buscarPropiedadPrecio" class="form-label">Introduce un precio: </label>
                     <div class="d-flex flex-row gap-2">
-                        <input type="number" class="form-control" name="buscarPropiedadPrecio" id="buscarPropiedadPrecio" min="0">
+                        <input type="number" class="form-control" name="buscarPropiedadPrecio"
+                            id="buscarPropiedadPrecio" placeholder="Introduce un precio" min="0">
                         <button type="button" class="btnDarAlta" id="ModPropiedadBoton"
                             name="ModPropiedadBoton">Buscar</button>
                     </div>

@@ -20,6 +20,8 @@ class Inmobiliaria {
 
         let respuesta = await peticionPOST("alta_propiedad.php", datos);
 
+        alert("Se ha dado de alta a la propiedad")
+
         return respuesta;
 
     }
@@ -61,6 +63,10 @@ class Inmobiliaria {
         let datos = new FormData();
 
         let respuesta = await peticionGET("get_propiedad.php", datos);
+
+        if (respuesta.datos == null) {
+            alert("No existe ninguna propiedad");
+        }
 
         return respuesta;
     }
