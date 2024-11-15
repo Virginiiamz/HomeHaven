@@ -12,6 +12,17 @@ class Propiedad {
 
 }
 
+class Contrato {
+    constructor(idcontrato, idpropiedad, idcliente, tipoventa, fecha, estado) {
+        this.idcontrato = idcontrato;
+        this.idpropiedad = idpropiedad;
+        this.idcliente = idcliente;
+        this.tipoventa = tipoventa;
+        this.fecha = fecha;
+        this.estado = estado;
+    }
+}
+
 class Inmobiliaria {
     async altaPropiedad(oPropiedad) {
         let datos = new FormData();
@@ -66,6 +77,60 @@ class Inmobiliaria {
 
         if (respuesta.datos == null) {
             alert("No existe ninguna propiedad");
+        }
+
+        return respuesta;
+    }
+
+    async altaContrato(oContrato) {
+        let datos = new FormData();
+
+        datos.append("contrato", JSON.stringify(oContrato));
+
+        let respuesta = await peticionPOST("alta_contrato.php", datos);
+
+        alert("Se ha dado de alta al contrato");
+
+        return respuesta;
+    }
+
+    async modificarContrato(oContrato) {
+        let datos = new FormData();
+
+        datos.append("contrato", JSON.stringify(oContrato));
+       
+        let respuesta = await peticionPOST("modificar_contrato.php", datos);
+
+        return respuesta;
+    }
+
+    async borrarContrato(idcontrato) {
+        let datos = new FormData();
+
+        datos.append("idcontrato", idcontrato);
+
+        let respuesta = await peticionPOST("borrar_contrato.php", datos);
+
+        return respuesta;
+    }
+
+    async buscarContrato(idcontrato) {
+        let datos = new FormData();
+
+        datos.append("idcontrato", idcontrato);
+
+        let respuesta = await peticionPOST("buscar_contrato.php", datos);
+
+        return respuesta;
+    }
+
+    async listadoContrato() {
+        let datos = new FormData();
+
+        let respuesta = await peticionGET("get_contrato.php", datos);
+
+        if (respuesta.datos == null) {
+            alert("No existe ningún contrato");
         }
 
         return respuesta;
