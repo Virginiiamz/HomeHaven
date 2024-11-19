@@ -45,7 +45,7 @@
                         <a class="nav-link dropdown-toggle fs-5 p-2" data-bs-toggle="dropdown" role="button"
                             aria-expanded="false" id="enlaceNav" href="#">Contratos</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" id="mnuListadoContratos">Listado de contratos</a>
+                            <li><a class="dropdown-item" href="#" id="mnuListadoContrato">Listado de contratos</a>
                             </li>
                             <li><a class="dropdown-item" href="#" id="mnuAltaContrato">Dar alta a un contrato</a>
                             </li>
@@ -77,8 +77,9 @@
 
             <!-- DAR DE ALTA UN CONTRATO -->
             <section class="row m-3">
-                <h2 class="m-1">Dar de alta un contrato</h2>
+                
                 <form class="form" id="frmAltaContrato" name="frmAltaContrato">
+                    <h2 class="m-1">Dar de alta un contrato</h2>
                     <div class="row mb-3">
                         <div class="col">
                             <!-- CAMPO ID PROPIEDAD -->
@@ -127,9 +128,16 @@
 
             <!-- FORMULARIO MODIFICAR CONTRATO -->
             <section class="row m-3">
-                <h2 class="m-1">Modificar un contrato</h2>
+               
                 <form class="form" id="frmModContrato" name="frmModContrato">
-                    <div class="row mb-3">
+                     <h2 class="m-1">Modificar un contrato</h2>
+                     <div class="row mb-3">
+                        <div class="col">
+                            <!-- CAMPO ID CONTRATO -->
+                            <input type="number" class="form-control" id="modContratoIdContrato" name="modContratoIdContrato" placeholder="ID Contrato" required />
+                        </div>
+                    </div>
+                     <div class="row mb-3">
                         <div class="col">
                             <!-- CAMPO ID PROPIEDAD -->
                             <input type="number" class="form-control" id="modContratoIdPropiedad" name="modContratoIdPropiedad" placeholder="ID Propiedad" required />
@@ -224,7 +232,7 @@
         defer></script>
     <script src="src/js/ajax.js"></script>
     <script src="src/js/objetos.js"></script>
-    <script src="src/js/codigo.js"></script>
+    <script src="src/js/codigoContrato.js"></script>
 </body>
 
 </html>

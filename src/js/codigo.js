@@ -11,19 +11,9 @@ function registrarEventos() {
     document.querySelector("#mnuListadoPropiedad").addEventListener("click", mostrarFormulario);
     document.querySelector("#mnuBuscarPropiedad").addEventListener("click", mostrarFormulario);
 
-    document.querySelector("#mnuAltaContrato").addEventListener("click", mostrarFormulario);
-    document.querySelector("#mnuListadoContrato").addEventListener("click", mostrarFormulario);
-    document.querySelector("#mnuBuscarContrato").addEventListener("click", mostrarFormulario);
-
-
     frmAltaPropiedad.AltaPropiedadBoton.addEventListener("click", procesarAltaPropiedad);
     frmModPropiedad.ModPropiedadBoton.addEventListener("click", procesarModificarPropiedad);
     frmBuscarPropiedad.ModPropiedadBoton.addEventListener("click", procesarBuscarPropiedad);
-
-    frmAltaContrato.altaContratoBoton.addEventListener("click", procesarAltaContrato);
-    frmModContrato.modContratoBoton.addEventListener("click", procesarModificarContrato);
-    frmBuscarContrato.ModContratoBoton.addEventListener("click", procesarBuscarContrato);
-
 }
 
 function mostrarFormulario(oEvento) {
@@ -43,18 +33,6 @@ function mostrarFormulario(oEvento) {
         case "mnuBuscarPropiedad":
             frmBuscarPropiedad.style.display = "block";
             break;
-
-
-        case "mnuAltaContrato":
-            frmAltaContrato.style.display = "block";
-            break;
-        case "mnuListadoContrato":
-            listadoContrato.style.display = "block";
-            procesarListadoPorContrato();
-            break;
-        case "mnuBuscarContrato":
-            frmBuscarContrato.style.display = "block";
-            break;
         default:
             break;
     }
@@ -67,12 +45,6 @@ function ocultarFormulario() {
     frmModPropiedad.style.display = "none";
     frmBuscarPropiedad.style.display = "none";
 
-    frmAltaContrato.style.display = "none";
-    listadoContrato.style.display = "none";
-    frmModContrato.style.display = "none";
-    frmBuscarContrato.style.display = "none";
-
-    resultadoBusquedaContrato.innerHTML = "";
     resultadoBusquedaPropiedad.innerHTML = "";
 }
 
@@ -93,48 +65,6 @@ async function procesarAltaPropiedad() {
 
 }
 
-async function procesarAltaContrato() { 
-    let idpropiedad = frmAltaContrato.altaContratoIdPropiedad.value;
-    let idcliente = frmAltaContrato.altaContratoIdCliente.value;
-    let tipoContrato = frmAltaContrato.altaContratoTipoTrato.value;
-    let fechaContrato = frmAltaContrato.altaContratoFecha.value;
-    let estadoContrato = frmAltaContrato.altaContratoEstado.value;
-
-    if (validarAltaContrato()){
-        let respuesta = await oInmobiliaria.altaContrato(new Contrato(null, idpropiedad, idcliente, tipoContrato, fechaContrato, estadoContrato));
-
-        if (!respuesta.error) {
-            frmAltaContrato.reset();
-        }
-    }
-}
-
-function validarAltaContrato(){
-    let valido=true;
-    let idpropiedad = frmAltaContrato.altaContratoIdPropiedad.value;
-    let idcliente = frmAltaContrato.altaContratoIdCliente.value;
-    let tipoContrato = frmAltaContrato.altaContratoTipoTrato.value;
-    let fechaContrato = frmAltaContrato.altaContratoFecha.value;
-    let estadoContrato = frmAltaContrato.altaContratoEstado.value;
-
-    if (idpropiedad==0 || idpropiedad==null){
-        valido=false;
-    }
-    if (idcliente==0 || idcliente==null){
-        valido=false;
-    }
-    if (tipoContrato==null){
-        valido=false;
-    }
-    if (fechaContrato==null){
-        valido=false;
-    }
-    if (estadoContrato==null){
-        valido=false;
-    }
-
-    return valido;
-}
 
 function validarAltaPropiedad() {
 
@@ -181,27 +111,6 @@ async function procesarListadoPorPropiedad() {
     // Agregar manejador de evento para toda la tabla
     document.querySelector("#listadoPorPropiedad").addEventListener("click", procesarBotonEditarPropiedad)
 
-}
-
-async function procesarListadoPorContrato(){
-    let respuesta = await oInmobiliaria.listadoContrato();
-
-    let tabla = "<h2>Listado de contratos</h2>";
-    tabla += "<table class='table table-striped' id='listadoPorContrato'>";
-    tabla += "<thead><tr><th>ID Contrato</th><th>ID Propiedad</th><th>ID Cliente</th><th>Tipo de Contrato</th><th>Fecha</th><th>Estado de venta</th></thead><tbody>"
-
-    for (let contrato in respuesta.datos){
-        tabla += "<tr><td>" + contrato.idcontrato + "</td>";
-        tabla += "<td>" + contrato.idpropiedad + "</td>";
-        tabla += "<td>" + contrato.idcliente + "</td>";
-        tabla += "<td>" + contrato.tipoventa + "</td>";
-        tabla += "<td>" + contrato.fecha + "</td>";
-        tabla += "<td>" + contrato.estado + "</td>";
-
-        tabla += "<td><button class='btn btn-primary modificarContrato' data-propiedad='" + JSON.stringify(contrato) + "'><i class='bi bi-pencil-square'></i></button><button class='btn btn-danger ms-3 eliminarContrato' data-propiedad='" + JSON.stringify(contrato) + "'><i class='bi bi-trash'></i></button></td></tr>";
-    }
-
-    tabla += "</tbody></table>";
 }
 
 function procesarBotonEditarPropiedad(oEvento) {

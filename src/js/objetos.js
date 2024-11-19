@@ -114,10 +114,10 @@ class Inmobiliaria {
         return respuesta;
     }
 
-    async buscarContrato(idcontrato) {
+    async buscarContrato(idpropiedad) {
         let datos = new FormData();
 
-        datos.append("idcontrato", idcontrato);
+        datos.append("idpropiedad", idpropiedad);
 
         let respuesta = await peticionPOST("buscar_contrato.php", datos);
 
