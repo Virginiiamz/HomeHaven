@@ -1,6 +1,8 @@
 "use strict";
 
-const rutaBackend = "http://localhost/ProyectoDIW/backend/";
+const rutaBackend = "http://localhost/proyectoInterfaces/HomeHaven/backend/";
+
+
 
 /**
  * Realiza peticiones AJAX de tipo GET

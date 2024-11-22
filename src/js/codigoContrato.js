@@ -101,7 +101,7 @@ async function procesarListadoPorContrato() {
     tabla += "<table class='table table-striped' id='listadoPorContrato'>";
     tabla += "<thead><tr><th>ID Contrato</th><th>ID Propiedad</th><th>ID Cliente</th><th>Tipo de Contrato</th><th>Fecha</th><th>Estado de venta</th></tr></thead><tbody>";
 
-    for (let propiedad of respuesta.datos) {
+    for (let contrato of respuesta.datos) {
         tabla += "<tr><td>" + contrato.idcontrato + "</td>";
         tabla += "<td>" + contrato.idpropiedad + "</td>";
         tabla += "<td>" + contrato.idcliente + "</td>";
@@ -137,7 +137,7 @@ function procesarBotonEditarContrato(oEvento) {
         let contrato = JSON.parse(boton.dataset.contrato);
 
         if (boton.classList.contains("modificarContrato")) {
-            frmModPropiedad.style.display = "block";
+            frmModContrato.style.display = "block";
 
             frmModContrato.modContratoIdContrato.value = contrato.idcontrato;
             frmModContrato.modContratoIdPropiedad.value = contrato.idpropiedad;

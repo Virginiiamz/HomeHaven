@@ -13,6 +13,7 @@ class Propiedad {
 }
 
 class Contrato {
+
     constructor(idcontrato, idpropiedad, idcliente, tipoventa, fecha, estado) {
         this.idcontrato = idcontrato;
         this.idpropiedad = idpropiedad;
@@ -20,6 +21,17 @@ class Contrato {
         this.tipoventa = tipoventa;
         this.fecha = fecha;
         this.estado = estado;
+    }
+
+    toJSON(){
+        return {
+            idcontrato: this.idcontrato,
+            idpropiedad: this.idpropiedad,
+            idcliente: this.idcliente,
+            tipoventa: this.tipoventa,
+            fecha: this.fecha,
+            estado: this.estado
+        };
     }
 }
 
