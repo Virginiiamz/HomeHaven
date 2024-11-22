@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: db
--- Tiempo de generación: 08-11-2024 a las 16:09:35
+-- Tiempo de generación: 22-11-2024 a las 11:19:52
 -- Versión del servidor: 8.0.39
 -- Versión de PHP: 8.2.8
 
@@ -35,6 +35,13 @@ CREATE TABLE `cliente` (
   `telefono` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`idcliente`, `nombre`, `direccion`, `email`, `telefono`) VALUES
+(1, 'cliente1', 'dir cliente 1', 'cliente1@gmail.com', 123456789);
+
 -- --------------------------------------------------------
 
 --
@@ -46,9 +53,16 @@ CREATE TABLE `contrato` (
   `idcliente` int NOT NULL,
   `idpropiedad` int NOT NULL,
   `tipoventa` enum('Compra','Venta','Alquiler') NOT NULL,
-  `estado` tinyint(1) NOT NULL,
+  `estado` enum('enproceso','comprado') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `contrato`
+--
+
+INSERT INTO `contrato` (`idcontrato`, `idcliente`, `idpropiedad`, `tipoventa`, `estado`, `fecha`) VALUES
+(1, 1, 1, 'Venta', 'comprado', '2024-11-22');
 
 -- --------------------------------------------------------
 
@@ -63,6 +77,13 @@ CREATE TABLE `propiedad` (
   `tipovivienda` varchar(50) NOT NULL,
   `imagen` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `propiedad`
+--
+
+INSERT INTO `propiedad` (`idpropiedad`, `direccion`, `precio`, `tipovivienda`, `imagen`) VALUES
+(1, 'propiedad1', 1111, 'Casa', '');
 
 --
 -- Índices para tablas volcadas
@@ -96,19 +117,19 @@ ALTER TABLE `propiedad`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `idcliente` int NOT NULL AUTO_INCREMENT;
+  MODIFY `idcliente` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `contrato`
 --
 ALTER TABLE `contrato`
-  MODIFY `idcontrato` int NOT NULL AUTO_INCREMENT;
+  MODIFY `idcontrato` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `propiedad`
 --
 ALTER TABLE `propiedad`
-  MODIFY `idpropiedad` int NOT NULL AUTO_INCREMENT;
+  MODIFY `idpropiedad` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas

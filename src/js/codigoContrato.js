@@ -108,7 +108,6 @@ async function procesarListadoPorContrato() {
         tabla += "<td>" + contrato.tipoventa + "</td>";
         tabla += "<td>" + contrato.fecha + "</td>";
         tabla += "<td>" + contrato.estado + "</td></tr>";
-
         tabla += "<td><button class='btn btn-primary modificarContrato' data-contrato='" + JSON.stringify(contrato) + "'><i class='bi bi-pencil-square'></i></button><button class='btn btn-danger ms-3 eliminarContrato' data-contrato='" + JSON.stringify(contrato) + "'><i class='bi bi-trash'></i></button></td></tr>";
     }
 
