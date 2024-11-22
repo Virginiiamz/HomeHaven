@@ -107,11 +107,11 @@ async function procesarListadoPorContrato() {
         tabla += "<td>" + contrato.idcliente + "</td>";
         tabla += "<td>" + contrato.tipoventa + "</td>";
         tabla += "<td>" + contrato.fecha + "</td>";
-        tabla += "<td>" + contrato.estado + "</td></tr>";
+        tabla += "<td>" + contrato.estado + "</td>";
         tabla += "<td><button class='btn btn-primary modificarContrato' data-contrato='" + JSON.stringify(contrato) + "'><i class='bi bi-pencil-square'></i></button><button class='btn btn-danger ms-3 eliminarContrato' data-contrato='" + JSON.stringify(contrato) + "'><i class='bi bi-trash'></i></button></td></tr>";
     }
 
-    tabla += "</tbody></table>";
+    tabla += "</tr></tbody></table>";
 
     // Agregamos el contenido a la capa de listados
     document.querySelector("#listadoContrato").innerHTML = tabla;
@@ -216,25 +216,27 @@ async function procesarBuscarContrato() {
 
     let respuesta = await oInmobiliaria.buscarContrato(idpropiedad);
 
+
     if (!respuesta.error) { // Si NO hay error
         let resultadoBusqueda = document.querySelector("#resultadoBusquedaContrato");
-
-        // Escribimos resultado
+        
         let tabla = "<table class='table'>";
         tabla += "<thead><tr><th>ID Contrato</th><th>ID Propiedad</th><th>ID Cliente</th><th>Tipo de contrato</th><th>Fecha</th><th>Estado</th></tr></thead>";
-        tabla += "<tbody><tr>";
-        tabla += "<td>" + contrato.idcontrato + "</td>";
-        tabla += "<td>" + contrato.idpropiedad + "</td>";
-        tabla += "<td>" + contrato.idcliente + "</td>";
-        tabla += "<td>" + contrato.tipoventa + "</td>";
-        tabla += "<td>" + contrato.fecha + "</td>";
-        tabla += "<td>" + contrato.estado + "</td>";
-        tabla += "</tr></tbody></table>";
+        tabla += "<tbody>";
+        let contrato = respuesta.datos
+            tabla += "<tr><td>" + contrato.idcontrato + "</td>";
+            tabla += "<td>" + contrato.idpropiedad + "</td>";
+            tabla += "<td>" + contrato.idcliente + "</td>";
+            tabla += "<td>" + contrato.tipoventa + "</td>";
+            tabla += "<td>" + contrato.fecha + "</td>";
+            tabla += "<td>" + contrato.estado + "</td></tr>";
+        // Escribimos resultado
+        
+        tabla += "</tbody></table>";
 
-        resultadoBusqueda.innerHTML = tablaSalida;
+        resultadoBusqueda.innerHTML = tabla;
         resultadoBusqueda.style.display = 'block';
 
-        frmBuscarPropiedad.reset();
 
     } else { // Si hay error
         alert(respuesta.mensaje);

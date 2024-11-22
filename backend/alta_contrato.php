@@ -6,7 +6,7 @@ $conexion = obtenerConexion();
 // $input = file_get_contents("php://input");
 $contrato = json_decode($_POST['contrato']);
 
-$sql = "INSERT INTO contrato VALUES (null, $contrato->idpropiedad , $contrato->idcliente, '$contrato->tipoventa', '$contrato->estado','$contrato->fecha');";
+$sql = "INSERT INTO contrato VALUES (null,  $contrato->idcliente, $contrato->idpropiedad , '$contrato->tipoventa', '$contrato->estado','$contrato->fecha');";
 
 mysqli_query($conexion, $sql);
 

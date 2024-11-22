@@ -1,6 +1,6 @@
 "use strict";
 
-const rutaBackend = "http://localhost/proyectoInterfaces/HomeHaven/backend/";
+const rutaBackend = "http://localhost/ProyectoDIW/backend/";
 
 
 
