@@ -31,10 +31,10 @@
                             <a class="nav-link fs-5 p-2" id="enlaceNav" href="propiedad.html">Propiedades</a>
                         </li>
                         <li class="nav-item p-lg-2">
-                            <a class="nav-link fs-5 p-2" id="enlaceNav" href="">Contratos</a>
+                            <a class="nav-link fs-5 p-2" id="enlaceNav" href="contrato.html">Contratos</a>
                         </li>
                         <li class="nav-item p-lg-2">
-                            <a class="nav-link fs-5 p-2" id="enlaceNav" href="">Clientes</a>
+                            <a class="nav-link fs-5 p-2" id="enlaceNav" href="#">Clientes</a>
                         </li>
                     </ul>
                 </div>
@@ -48,7 +48,7 @@
         </div>
 
         <section class="container py-5">
-            <form id="registroClienteForm" class="row g-3" action="#" method="POST">
+            <form id="registroClienteForm" class="row g-3" action="guardar_cliente.php" method="POST">
                 <div class="col-md-6"><input type="text" class="form-control" placeholder="Nombre Completo" id="nombre"
                         name="nombre" required></div>
                 <div class="col-md-6"><input type="text" class="form-control" placeholder="DNI" id="dni" name="dni"
@@ -113,42 +113,32 @@
         defer></script>
 
     <script>
-        // Almacén de clientes
-        let clientes = [];
-        const clienteForm = document.getElementById('registroClienteForm');
         const tablaClientes = document.getElementById('tablaClientes');
 
-        // Función para renderizar clientes en la tabla
-        function renderClientes() {
-            tablaClientes.innerHTML = '';
-            clientes.forEach((cliente, index) => {
-                tablaClientes.innerHTML += `
-                    <tr>
-                        <td>${index + 1}</td>
-                        <td>${cliente.nombre}</td>
-                        <td>${cliente.dni}</td>
-                        <td>${cliente.email}</td>
-                        <td>${cliente.telefono}</td>
-                        <td>${cliente.direccion}</td>
-                    </tr>
-                `;
-            });
+        // Cargar clientes desde la base de datos
+        async function cargarClientes() {
+            try {
+                const response = await fetch('listar_clientes.php');
+                const clientes = await response.json();
+                tablaClientes.innerHTML = '';
+                clientes.forEach(cliente => {
+                    tablaClientes.innerHTML += `
+                        <tr>
+                            <td>${cliente.idcliente}</td>
+                            <td>${cliente.nombre}</td>
+                            <td>${cliente.direccion}</td>
+                            <td>${cliente.email}</td>
+                            <td>${cliente.telefono}</td>
+                        </tr>
+                    `;
+                });
+            } catch (error) {
+                console.error('Error al cargar los clientes:', error);
+            }
         }
 
-        // Registrar cliente
-        clienteForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const nuevoCliente = {
-                nombre: document.getElementById('nombre').value,
-                dni: document.getElementById('dni').value,
-                email: document.getElementById('email').value,
-                telefono: document.getElementById('telefono').value,
-                direccion: document.getElementById('direccion').value,
-            };
-            clientes.push(nuevoCliente);
-            clienteForm.reset();
-            renderClientes();
-        });
+        // Cargar clientes al inicio
+        cargarClientes();
     </script>
 </body>
 
