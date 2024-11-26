@@ -91,6 +91,13 @@ function ocultarFormularioContrato() {
     
 
     resultadoBusquedaContrato.innerHTML = "";
+
+    frmAltaPropiedad.style.display = "none";
+    listadoPropiedad.style.display = "none";
+    frmModPropiedad.style.display = "none";
+    frmBuscarPropiedad.style.display = "none";
+
+    resultadoBusquedaPropiedad.innerHTML = "";
 }
 
 async function procesarListadoPorContrato() {
