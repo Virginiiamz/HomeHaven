@@ -1,98 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Clientes</title>
+    <title>Gestión de Clientes - HomeHaven</title>
     <link rel="stylesheet" href="src/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">HomeHaven</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="comprar.html">Comprar</a></li>
-                        <li class="nav-item"><a class="nav-link" href="vender.html">Vender</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="cliente.html">Clientes</a></li>
+
+                <div class="d-flex justify-content-between">
+                    <a class="navbar-brand" href="index.html"><img class="img-fluid logo" src="src/img/logo.png"
+                            alt="Logo"></a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse me-lg-4 mb-3 mb-lg-0 col-lg-11" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto me-auto mb-2 mb-lg-0 mt-2 mt-lg-0">
+                        <li
+                            class="nav-item d-inline-flex align-items-center justify-content-end justify-content-lg-start p-lg-2">
+                            <a class="nav-link fs-5 p-2" id="enlaceNav" href="propiedad.html">Propiedades</a>
+                        </li>
+                        <li
+                            class="nav-item d-inline-flex align-items-center justify-content-end justify-content-lg-start p-lg-2">
+                            <a class="nav-link fs-5 p-2" id="enlaceNav" href="contrato.html">Contratos</a>
+                        </li>
+                        <li
+                            class="nav-item d-inline-flex align-items-center justify-content-end justify-content-lg-start p-lg-2">
+                            <a class="nav-link fs-5 p-2 active" id="enlaceNav" href="#">Clientes</a>
+                        </li>
                     </ul>
                 </div>
+
             </div>
         </nav>
     </header>
 
-    <main class="container mt-5">
-        <h1 class="text-center">Gestión de Clientes</h1>
+    <main class="container py-5">
+        <h1 class="text-center mb-4">Gestión de Clientes</h1>
 
-        <!-- Alertas -->
-        <div id="alertas" class="mt-3"></div>
-
-        <!-- Formulario de Clientes -->
-        <section class="my-4">
-            <h2>Formulario de Cliente</h2>
-            <form id="formCliente" class="border p-4 rounded">
+        <!-- Formulario para registrar o editar cliente -->
+        <div class="card p-4 mb-5">
+            <form id="clienteForm">
+                <input type="hidden" id="idcliente" name="idcliente">
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" class="form-control" required>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre Completo"
+                            required>
                     </div>
                     <div class="col-md-6">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
+                        <input type="text" class="form-control" id="dni" name="dni" placeholder="DNI" required>
                     </div>
                     <div class="col-md-6">
-                        <label for="telefono" class="form-label">Teléfono</label>
-                        <input type="text" id="telefono" name="telefono" class="form-control" required>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico"
+                            required>
                     </div>
-                    <input type="hidden" id="id" name="id">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Teléfono"
+                            maxlength="9" required>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" id="direccion" name="direccion"
+                            placeholder="Dirección de Propiedad Relacionada" required>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-end mt-3">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                    <button type="button" class="btn btn-secondary ms-2" onclick="limpiarFormulario()">Limpiar</button>
+                <div class="text-end mt-3">
+                    <button type="submit" class="btn btn-primary" id="guardarBtn">Guardar Cliente</button>
+                    <button type="reset" class="btn btn-secondary" id="cancelarBtn">Cancelar</button>
                 </div>
             </form>
-        </section>
+        </div>
 
-        <!-- Tabla de Clientes -->
-        <section>
-            <h2>Lista de Clientes</h2>
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered" id="tablaClientes">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Email</th>
-                            <th>Teléfono</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Contenido generado dinámicamente -->
-                    </tbody>
-                </table>
-            </div>
-        </section>
+        <!-- Buscador -->
+        <div class="mb-4">
+            <input type="text" class="form-control" id="buscar" placeholder="Buscar cliente por nombre o DNI">
+        </div>
+
+        <!-- Tabla de clientes -->
+        <div class="card p-4">
+            <h3 class="text-center">Listado de Clientes</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>DNI</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Dirección</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaClientes">
+                    <!-- Los clientes se cargarán dinámicamente -->
+                </tbody>
+            </table>
+        </div>
     </main>
 
-    <footer class="bg-light text-center py-3 mt-5">
+    <footer class="py-3 text-center">
         <p>&copy; 2024 HomeHaven. Todos los derechos reservados.</p>
     </footer>
 
+    <script src="clientes.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="src/js/clientes.js" defer></script>
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
