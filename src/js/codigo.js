@@ -7,10 +7,12 @@ registrarEventos();
 function registrarEventos() {
     ocultarFormulario();
 
+    // Formularios
     document.querySelector("#mnuAltaPropiedad").addEventListener("click", mostrarFormulario);
     document.querySelector("#mnuListadoPropiedad").addEventListener("click", mostrarFormulario);
     document.querySelector("#mnuBuscarPropiedad").addEventListener("click", mostrarFormulario);
 
+    // Botones de los formularios
     frmAltaPropiedad.AltaPropiedadBoton.addEventListener("click", procesarAltaPropiedad);
     frmModPropiedad.ModPropiedadBoton.addEventListener("click", procesarModificarPropiedad);
     frmBuscarPropiedad.ModPropiedadBoton.addEventListener("click", procesarBuscarPropiedad);

@@ -35,6 +35,8 @@ class Contrato {
     }
 }
 
+// Añadir class cliente
+
 class Inmobiliaria {
     async altaPropiedad(oPropiedad) {
         let datos = new FormData();
