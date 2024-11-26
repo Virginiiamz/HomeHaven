@@ -1,134 +1,101 @@
-// clientes.js
-
-// Variables Globales
-const apiUrl = "api/clientes.php";
+const clienteForm = document.getElementById("clienteForm");
 const tablaClientes = document.getElementById("tablaClientes");
-const formularioCliente = document.getElementById("formCliente");
-const alertas = document.getElementById("alertas");
+const buscar = document.getElementById("buscar");
+const idClienteInput = document.getElementById("idcliente");
 
-// Función para mostrar mensajes de alerta
-function mostrarAlerta(tipo, mensaje) {
-    alertas.innerHTML = `<div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
-        ${mensaje}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>`;
+// Cargar clientes al inicio
+document.addEventListener("DOMContentLoaded", obtenerClientes);
+
+// Obtener clientes
+function obtenerClientes(termino = "") {
+    fetch(`listar_clientes.php?termino=${termino}`)
+        .then(response => response.json())
+        .then(data => {
+            if (!data.error) {
+                renderClientes(data.datos);
+            } else {
+                alert(data.mensaje);
+            }
+        });
 }
 
-// Función para limpiar el formulario
-function limpiarFormulario() {
-    formularioCliente.reset();
+// Renderizar clientes en la tabla
+function renderClientes(clientes) {
+    tablaClientes.innerHTML = "";
+    clientes.forEach(cliente => {
+        tablaClientes.innerHTML += `
+            <tr>
+                <td>${cliente.idcliente}</td>
+                <td>${cliente.nombre}</td>
+                <td>${cliente.dni}</td>
+                <td>${cliente.email}</td>
+                <td>${cliente.telefono}</td>
+                <td>${cliente.direccion}</td>
+                <td>
+                    <button class="btn btn-warning btn-sm" onclick="editarCliente(${cliente.idcliente})">Editar</button>
+                    <button class="btn btn-danger btn-sm" onclick="eliminarCliente(${cliente.idcliente})">Eliminar</button>
+                </td>
+            </tr>
+        `;
+    });
 }
 
-// Función para listar clientes
-async function listarClientes() {
-    try {
-        const response = await fetch(`${apiUrl}?accion=listar`);
-        const data = await response.json();
+// Guardar cliente (alta o modificación)
+clienteForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = new FormData(clienteForm);
+    const endpoint = idClienteInput.value ? "modificar_cliente.php" : "alta_cliente.php";
 
-        if (data.error) {
-            mostrarAlerta("danger", data.mensaje);
-        } else {
-            let filas = "";
-            data.datos.forEach(cliente => {
-                filas += `
-                    <tr>
-                        <td>${cliente.id}</td>
-                        <td>${cliente.nombre}</td>
-                        <td>${cliente.email}</td>
-                        <td>${cliente.telefono}</td>
-                        <td>
-                            <button class="btn btn-warning btn-sm" onclick="editarCliente(${cliente.id})">Editar</button>
-                            <button class="btn btn-danger btn-sm" onclick="eliminarCliente(${cliente.id})">Eliminar</button>
-                        </td>
-                    </tr>`;
+    fetch(endpoint, { method: "POST", body: formData })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.error) {
+                obtenerClientes();
+                clienteForm.reset();
+            } else {
+                alert(data.mensaje);
+            }
+        });
+});
+
+// Buscar cliente
+buscar.addEventListener("input", () => {
+    obtenerClientes(buscar.value);
+});
+
+// Editar cliente
+function editarCliente(idcliente) {
+    fetch(`get_cliente.php?idcliente=${idcliente}`)
+        .then(response => response.json())
+        .then(data => {
+            if (!data.error) {
+                const { nombre, dni, email, telefono, direccion } = data.datos;
+                document.getElementById("idcliente").value = idcliente;
+                document.getElementById("nombre").value = nombre;
+                document.getElementById("dni").value = dni;
+                document.getElementById("email").value = email;
+                document.getElementById("telefono").value = telefono;
+                document.getElementById("direccion").value = direccion;
+            } else {
+                alert(data.mensaje);
+            }
+        });
+}
+
+// Eliminar cliente
+function eliminarCliente(idcliente) {
+    if (confirm("¿Desea eliminar este cliente?")) {
+        fetch("borrar_cliente.php", {
+            method: "POST",
+            body: new URLSearchParams({ idcliente }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (!data.error) {
+                    obtenerClientes();
+                } else {
+                    alert(data.mensaje);
+                }
             });
-            tablaClientes.innerHTML = filas;
-        }
-    } catch (error) {
-        mostrarAlerta("danger", "Error al cargar los clientes.");
     }
 }
-
-// Función para agregar o modificar un cliente
-async function guardarCliente(event) {
-    event.preventDefault();
-
-    const formData = new FormData(formularioCliente);
-    const id = formData.get("id");
-    const accion = id ? "modificar" : "alta";
-
-    try {
-        const response = await fetch(apiUrl, {
-            method: "POST",
-            body: JSON.stringify({
-                accion: accion,
-                datos: Object.fromEntries(formData.entries())
-            }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-        const data = await response.json();
-
-        if (data.error) {
-            mostrarAlerta("danger", data.mensaje);
-        } else {
-            mostrarAlerta("success", data.mensaje);
-            listarClientes();
-            limpiarFormulario();
-        }
-    } catch (error) {
-        mostrarAlerta("danger", "Error al guardar el cliente.");
-    }
-}
-
-// Función para buscar cliente y cargarlo en el formulario
-async function editarCliente(id) {
-    try {
-        const response = await fetch(`${apiUrl}?accion=buscar&id=${id}`);
-        const data = await response.json();
-
-        if (data.error) {
-            mostrarAlerta("danger", data.mensaje);
-        } else {
-            const cliente = data.datos;
-            formularioCliente.nombre.value = cliente.nombre;
-            formularioCliente.email.value = cliente.email;
-            formularioCliente.telefono.value = cliente.telefono;
-            formularioCliente.id.value = cliente.id;
-        }
-    } catch (error) {
-        mostrarAlerta("danger", "Error al buscar el cliente.");
-    }
-}
-
-// Función para eliminar un cliente
-async function eliminarCliente(id) {
-    if (!confirm("¿Está seguro de que desea eliminar este cliente?")) return;
-
-    try {
-        const response = await fetch(apiUrl, {
-            method: "POST",
-            body: JSON.stringify({ accion: "borrar", id: id }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-        const data = await response.json();
-
-        if (data.error) {
-            mostrarAlerta("danger", data.mensaje);
-        } else {
-            mostrarAlerta("success", data.mensaje);
-            listarClientes();
-        }
-    } catch (error) {
-        mostrarAlerta("danger", "Error al eliminar el cliente.");
-    }
-}
-
-// Evento para el envío del formulario
-formularioCliente.addEventListener("submit", guardarCliente);
-
-// Cargar clientes al iniciar
-document.addEventListener("DOMContentLoaded", listarClientes);
