@@ -2,14 +2,14 @@
 
 var oInmobiliaria = new Inmobiliaria();
 
-ocultarFormulario();
-registrarEventos();
+ocultarFormularioContrato();
+registrarEventosContrato();
 
-function registrarEventos() {
+function registrarEventosContrato() {
 
-    document.querySelector("#mnuAltaContrato").addEventListener("click", mostrarFormulario);
-    document.querySelector("#mnuListadoContrato").addEventListener("click", mostrarFormulario);
-    document.querySelector("#mnuBuscarContrato").addEventListener("click", mostrarFormulario);
+    document.querySelector("#mnuAltaContrato").addEventListener("click", mostrarFormularioContrato);
+    document.querySelector("#mnuListadoContrato").addEventListener("click", mostrarFormularioContrato);
+    document.querySelector("#mnuBuscarContrato").addEventListener("click", mostrarFormularioContrato);
 
     frmAltaContrato.altaContratoBoton.addEventListener("click", procesarAltaContrato);
     frmModContrato.modContratoBoton.addEventListener("click", procesarModificarContrato);
@@ -60,11 +60,11 @@ function validarAltaContrato(){
     return valido;
 }
 
-function mostrarFormulario(oEvento) {
+function mostrarFormularioContrato(oEvento) {
 
     let opcion = oEvento.target.id;
 
-    ocultarFormulario();
+    ocultarFormularioContrato();
 
     switch (opcion) {
         case "mnuAltaContrato":
@@ -83,11 +83,12 @@ function mostrarFormulario(oEvento) {
 
 }
 
-function ocultarFormulario() {
+function ocultarFormularioContrato() {
     frmAltaContrato.style.display = "none";
     listadoContrato.style.display = "none";
     frmModContrato.style.display = "none";
     frmBuscarContrato.style.display = "none";
+    
 
     resultadoBusquedaContrato.innerHTML = "";
 }

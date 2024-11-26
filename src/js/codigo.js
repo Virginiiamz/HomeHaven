@@ -48,6 +48,14 @@ function ocultarFormulario() {
     frmBuscarPropiedad.style.display = "none";
 
     resultadoBusquedaPropiedad.innerHTML = "";
+    
+    frmAltaContrato.style.display = "none";
+    listadoContrato.style.display = "none";
+    frmModContrato.style.display = "none";
+    frmBuscarContrato.style.display = "none";
+    
+
+    resultadoBusquedaContrato.innerHTML = "";
 }
 
 async function procesarAltaPropiedad() {
