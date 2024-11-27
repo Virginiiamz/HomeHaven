@@ -52,12 +52,12 @@ function mostrarFormulario(oEvento) {
             break;
         case "mnuListadoCliente":
             tablaCliente.style.display = "block";
+
             break;
         case "mnuBuscarCliente":
             frmBuscarCliente.style.display = "block";
             break;
-        default:
-            break;
+            
     }
 }
 
@@ -71,7 +71,7 @@ function ocultarFormulario() {
 
     // Ocultar formularios de clientes
     frmAltaCliente.style.display = "none";
-    frmModCliente.style.display = "none";
+    frmBuscarCliente.style.display = "none";
     tablaCliente.style.display = "none";
 }
 
@@ -241,7 +241,7 @@ async function buscarClientes(termino = "") {
 }
 
 async function listarClientes(clientes) {
-    const tablaClientes = document.getElementById("tablaCliente");
+    const tablaClientes = document.getElementById("tablaClientes");
     tablaClientes.innerHTML = "";
     clientes.forEach(cliente => {
         tablaClientes.innerHTML += `
