@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `inmobiliaria`
+-- Base de datos: `inmobiliariadiw`
 --
 
 -- --------------------------------------------------------
@@ -33,7 +33,7 @@ CREATE TABLE `cliente` (
   `direccion` varchar(200) NOT NULL,
   `email` varchar(100) NOT NULL,
   `telefono` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `cliente`
@@ -53,9 +53,9 @@ CREATE TABLE `contrato` (
   `idcliente` int NOT NULL,
   `idpropiedad` int NOT NULL,
   `tipoventa` enum('Compra','Venta','Alquiler') NOT NULL,
-  `estado` enum('enproceso','comprado') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `estado` enum('enproceso','comprado') CHARACTER SET utf8mb4 NOT NULL,
   `fecha` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `contrato`
@@ -76,7 +76,7 @@ CREATE TABLE `propiedad` (
   `precio` float NOT NULL,
   `tipovivienda` varchar(50) NOT NULL,
   `imagen` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `propiedad`
