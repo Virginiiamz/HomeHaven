@@ -158,61 +158,68 @@
             </div>
         </div>
 
-        <div class="m-2">
+        
+    <!-- Añadir formularios de clientes y contratos -->
 
-            <!-- Formulario para dar de alta a un cliente -->
-            <div class="card p-4 mb-5">
-                <form id="frmAltaCliente" class="frmAltaCliente" name="frmAltaCliente">
-                    <input type="hidden" id="idcliente" name="idcliente">
-                    <h2 class="m-1">Registrar Cliente</h2>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre Completo" required>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" id="dni" name="dni" placeholder="DNI" required>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico" required>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" maxlength="9" required>
-                        </div>
-                        <div class="col-md-12">
-                            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección de Propiedad Relacionada" required>
-                        </div>
+    <div class="m-2">
+
+        <!-- Formulario para dar de alta a un cliente -->
+        <section class="row m-3">
+            <form id="frmAltaCliente" name="frmAltaCliente">
+                <input type="hidden" id="idcliente" name="idcliente">
+                <h2 class="m-1">Registrar Cliente</h2>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre Completo" required>
                     </div>
-                    <div class="text-end mt-3">
-                        <button type="submit" class="btn btn-primary" id="guardarClienteBtn">Guardar Cliente</button>
-                        <button type="reset" class="btn btn-secondary" id="cancelarBtn">Cancelar</button>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="dni" name="dni" placeholder="DNI" required>
                     </div>
-                </form>
+                    <div class="col-md-6">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" maxlength="9" required>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección de Propiedad Relacionada" required>
+                    </div>
+                </div>
+                <div class="text-end mt-3">
+                    <button type="submit" class="btn btn-primary" id="guardarClienteBtn">Guardar Cliente</button>
+                    <button type="reset" class="btn btn-secondary" id="cancelarBtn">Cancelar</button>
+                </div>
+            </form>
+        </section>
+    
+        <!-- Buscador de clientes -->
+        <section class="row m-3">
+         <div class="card p-4 mb-5">
+            <form id="frmBuscarCliente" name="frmBuscarCliente">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="buscar" 
+                        name="buscar" 
+                        placeholder="Buscar cliente por nombre o DNI"
+                    >
+                    <button type="submit" class="btn btn-primary" id="buscarClienteBtn">Buscar</button>
+                </div>
+            </form>
             </div>
+        </section>
         
-            <!-- Buscador de clientes -->
-            <div class="card p-4 mb-5">
-                <form id="frmModCliente" class="frmModCliente">
-                    <div class="input-group">
-                        <input 
-                            type="text" 
-                            class="form-control" 
-                            id="buscar" 
-                            name="buscar" 
-                            placeholder="Buscar cliente por nombre o DNI"
-                        >
-                        <button type="submit" class="btn btn-primary" id="buscarClienteBtn">Buscar</button>
-                    </div>
-                </form>
-            </div>
-            
-        
-            <!-- Tabla de clientes -->
-            <div class="card p-4">
+    
+        <!-- Tabla de clientes -->
+         <section class="row m-3">
+            <form id="tablaCliente">
+            <div class="card p-4" id="tablaClientes" name="tablaClientes">
                 <h3 class="text-center">Listado de Clientes</h3>
                 <div class="text-end mb-3">
                     <button id="generarListadoBtn" class="btn btn-primary">Generar Listado</button>
                 </div>
-                <table class="table table-striped" id="tablaCliente">
+                <table class="table table-striped" id="tablaClientes">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -229,11 +236,11 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-        
+            </form>
+        </section>
+    </div>
 
-
-    <!-- Añadir formularios de clientes y contratos -->
+    
     </main>
 
     <footer class="py-3 mt-4">
