@@ -1,13 +1,10 @@
-Despliegue: 
+<h2>Despliegue: </h2>
 http://www.homehavendiw.com.mialias.net
 
-Usuario Despliegue: homeha435
-Contraseña Despliegue: zupajI0y
+<p>Usuario Despliegue: homeha435</p>
+<p>Contraseña Despliegue: zupajI0y</p>
 
-Enlace GitHub:
-https://github.com/Virginiiamz/HomeHaven.git
-
-Entidades:
+<h2>Entidades:</h2>
 - Virginia Muñoz Castro: Propiedad
 - Nicolai Marlon Schirmer : Contrato
 - Francisco Javier Ruiz Gallego: Cliente
