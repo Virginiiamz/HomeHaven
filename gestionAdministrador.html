@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Administracion - HomeHaven</title>
+    <title>Propiedades - HomeHaven</title>
     <link rel="stylesheet" href="src/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
@@ -45,7 +45,7 @@
                         <a class="nav-link dropdown-toggle fs-5 p-2" data-bs-toggle="dropdown" role="button"
                             aria-expanded="false" id="enlaceNav" href="#">Contratos</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" id="mnuListadoContrato">Listado de contratos</a>
+                            <li><a class="dropdown-item" href="#" id="mnuListadoContratos">Listado de contratos</a>
                             </li>
                             <li><a class="dropdown-item" href="#" id="mnuAltaContrato">Dar alta a un contrato</a>
                             </li>
@@ -158,140 +158,82 @@
             </div>
         </div>
 
+        <div class="m-2">
+
+            <!-- Formulario para dar de alta a un cliente -->
+            <div class="card p-4 mb-5">
+                <form id="frmAltaCliente" class="frmAltaCliente" name="frmAltaCliente">
+                    <input type="hidden" id="idcliente" name="idcliente">
+                    <h2 class="m-1">Registrar Cliente</h2>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre Completo" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="dni" name="dni" placeholder="DNI" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Correo Electrónico" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" maxlength="9" required>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección de Propiedad Relacionada" required>
+                        </div>
+                    </div>
+                    <div class="text-end mt-3">
+                        <button type="submit" class="btn btn-primary" id="guardarClienteBtn">Guardar Cliente</button>
+                        <button type="reset" class="btn btn-secondary" id="cancelarBtn">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        
+            <!-- Buscador de clientes -->
+            <div class="card p-4 mb-5">
+                <form id="frmModCliente" class="frmModCliente">
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="buscar" 
+                            name="buscar" 
+                            placeholder="Buscar cliente por nombre o DNI"
+                        >
+                        <button type="submit" class="btn btn-primary" id="buscarClienteBtn">Buscar</button>
+                    </div>
+                </form>
+            </div>
+            
+        
+            <!-- Tabla de clientes -->
+            <div class="card p-4">
+                <h3 class="text-center">Listado de Clientes</h3>
+                <div class="text-end mb-3">
+                    <button id="generarListadoBtn" class="btn btn-primary">Generar Listado</button>
+                </div>
+                <table class="table table-striped" id="tablaCliente">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>DNI</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>Dirección</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaClienteBody">
+                        <!-- Aquí se agregarán las filas dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+
 
     <!-- Añadir formularios de clientes y contratos -->
-
-    <div class="m-2">
-        <!-- DAR DE ALTA UN CONTRATO -->
-        <section class="row m-3">
-            
-            <form class="form" id="frmAltaContrato" name="frmAltaContrato">
-                <h2 class="m-1">Dar de alta un contrato</h2>
-                <div class="row mb-3">
-                    <div class="col">
-                        <!-- CAMPO ID PROPIEDAD -->
-                        <input type="number" class="form-control" id="altaContratoIdPropiedad" name="altaContratoIdPropiedad" placeholder="ID Propiedad" required />
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <!-- CAMPO ID CLIENTE -->
-                        <input type="number" class="form-control" id="altaContratoIdCliente" name="altaContratoIdCliente" placeholder="ID Cliente" required />
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <!-- CAMPO TIPO DE CONTRATO -->
-                        <label for="altaContratoTipoTrato" class="form-label">Contrato de:</label>
-                        <select class="form-select" id="altaContratoTipoTrato" name="altaContratoTipoTrato" required>
-                            <option selected value="">Seleccione una opción...</option>
-                            <option value="compra">Compra</option>
-                            <option value="venta">Venta</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <!-- CAMPO DE FECHA -->
-                        <label for="altaContratoFecha" class="form-label">Fecha:</label>
-                        <input type="date" id="altaContratoFecha" name="altaContratoFecha" class="form-control" required>
-                    </div>
-                    <div class="col-md-4">
-                        <!-- CAMPO ESTADO DE VENTA -->
-                        <label for="altaContratoEstado" class="form-label">Estado de venta:</label>
-                        <select class="form-select" id="altaContratoEstado" name="altaContratoEstado" required>
-                            <option selected value="">Seleccione una opción...</option>
-                            <option value="enproceso">En venta</option>
-                            <option value="comprado">Comprado</option>
-                        </select>
-                    </div>
-                   
-                </div>
-                <!-- BOTON REGISTRAR -->
-                <button type="button" class="btnDarAlta" id="altaContratoBoton" name="altaContratoBoton">
-                    Registrar
-                </button>
-            </form>
-        </section>
-
-
-        <!-- FORMULARIO MODIFICAR CONTRATO -->
-        <section class="row m-3">
-           
-            <form class="form" id="frmModContrato" name="frmModContrato">
-                 <h2 class="m-1">Modificar un contrato</h2>
-                 <div class="row mb-3">
-                    <div class="col">
-                        <!-- CAMPO ID CONTRATO -->
-                        <input type="number" class="form-control" id="modContratoIdContrato" name="modContratoIdContrato" placeholder="ID Contrato" required />
-                    </div>
-                </div>
-                 <div class="row mb-3">
-                    <div class="col">
-                        <!-- CAMPO ID PROPIEDAD -->
-                        <input type="number" class="form-control" id="modContratoIdPropiedad" name="modContratoIdPropiedad" placeholder="ID Propiedad" required />
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <!-- CAMPO ID CLIENTE -->
-                        <input type="number" class="form-control" id="modContratoIdCliente" name="modContratoIdCliente" placeholder="ID Cliente" required />
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-4">
-                        <!-- CAMPO TIPO DE CONTRATO -->
-                        <label for="modContratoTipoTrato" class="form-label">Contrato de:</label>
-                        <select class="form-select" id="modContratoTipoTrato" name="modContratoTipoTrato" required>
-                            <option selected value="">Seleccione una opción...</option>
-                            <option value="compra">Compra</option>
-                            <option value="venta">Venta</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <!-- CAMPO DE FECHA -->
-                        <label for="modContratoFecha" class="form-label">Fecha:</label>
-                        <input type="date" id="modContratoFecha" name="modContratoFecha" class="form-control">
-                    </div>
-                    <div class="col-md-4">
-                        <!-- CAMPO ESTADO DE VENTA -->
-                        <label for="modContratoEstado" class="form-label">Estado de venta:</label>
-                        <select class="form-select" id="modContratoEstado" name="modContratoEstado" required>
-                            <option selected value="">Seleccione una opción...</option>
-                            <option value="enproceso">En venta</option>
-                            <option value="comprado">Comprado</option>
-                        </select>
-                    </div>
-                   
-                </div>
-                <!-- BOTON Modificar -->
-                <button type="button" class="btnModiciar" id="modContratoBoton" name="modContratoBoton">
-                    Modificar
-                </button>
-            </form>
-        </section>
-
-        <!-- FORMULARIO BUSCAR CONTRATO -->
-        <section class="m-3">
-            <form action="" id="frmBuscarContrato" name="frmBuscarContrato">
-                <div class="d-flex flex-row gap-2">
-                    <!-- BUSCAR ID PROPIEDAD -->
-                    <input type="number" class="form-control" name="buscarContratoIdPropiedad"
-                        id="buscarContratoIdPropiedad" placeholder="Introduce el Identificador de la Propiedad" min="0">
-                        <!-- BOTON BUSQUEDA CONTRATO -->
-                    <button type="button" class="btnDarAlta" id="ModContratoBoton"
-                        name="ModContratoBoton">Buscar</button>
-                </div>
-            </form>
-        </section>
-
-        <!-- RESULTADO DE BUSQUEDA -->
-        <div class="container" id="resultadoBusquedaContrato"></div>
-
-        <!-- LISTADO DE CONTRATOS -->
-        <div class="row m-3" id="listadoContrato">
-
-        </div>
-
-    </div>
     </main>
 
     <footer class="py-3 mt-4">
