@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: db
--- Tiempo de generación: 22-11-2024 a las 11:19:52
+-- Tiempo de generación: 28-11-2024 a las 10:31:03
 -- Versión del servidor: 8.0.39
 -- Versión de PHP: 8.2.8
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `inmobiliariadiw`
+-- Base de datos: `inmobiliaria`
 --
 
 -- --------------------------------------------------------
@@ -33,7 +33,7 @@ CREATE TABLE `cliente` (
   `direccion` varchar(200) NOT NULL,
   `email` varchar(100) NOT NULL,
   `telefono` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `cliente`
@@ -51,18 +51,18 @@ INSERT INTO `cliente` (`idcliente`, `nombre`, `direccion`, `email`, `telefono`) 
 CREATE TABLE `contrato` (
   `idcontrato` int NOT NULL,
   `idcliente` int NOT NULL,
-  `idpropiedad` int NOT NULL,
   `tipoventa` enum('Compra','Venta','Alquiler') NOT NULL,
-  `estado` enum('enproceso','comprado') CHARACTER SET utf8mb4 NOT NULL,
+  `estado` enum('enproceso','comprado') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `fecha` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `contrato`
 --
 
-INSERT INTO `contrato` (`idcontrato`, `idcliente`, `idpropiedad`, `tipoventa`, `estado`, `fecha`) VALUES
-(1, 1, 1, 'Venta', 'comprado', '2024-11-22');
+INSERT INTO `contrato` (`idcontrato`, `idcliente`, `tipoventa`, `estado`, `fecha`) VALUES
+(1, 1, 'Venta', 'comprado', '2024-11-22'),
+(2, 1, 'Compra', 'enproceso', '2024-11-28');
 
 -- --------------------------------------------------------
 
@@ -76,7 +76,7 @@ CREATE TABLE `propiedad` (
   `precio` float NOT NULL,
   `tipovivienda` varchar(50) NOT NULL,
   `imagen` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `propiedad`
@@ -84,6 +84,17 @@ CREATE TABLE `propiedad` (
 
 INSERT INTO `propiedad` (`idpropiedad`, `direccion`, `precio`, `tipovivienda`, `imagen`) VALUES
 (1, 'propiedad1', 1111, 'Casa', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `propiedad_contrato`
+--
+
+CREATE TABLE `propiedad_contrato` (
+  `idpropiedad` int NOT NULL,
+  `idcontrato` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Índices para tablas volcadas
@@ -100,7 +111,6 @@ ALTER TABLE `cliente`
 --
 ALTER TABLE `contrato`
   ADD PRIMARY KEY (`idcontrato`),
-  ADD KEY `idpropiedad` (`idpropiedad`),
   ADD KEY `idcliente` (`idcliente`);
 
 --
@@ -108,6 +118,13 @@ ALTER TABLE `contrato`
 --
 ALTER TABLE `propiedad`
   ADD PRIMARY KEY (`idpropiedad`);
+
+--
+-- Indices de la tabla `propiedad_contrato`
+--
+ALTER TABLE `propiedad_contrato`
+  ADD KEY `idpropiedad` (`idpropiedad`,`idcontrato`),
+  ADD KEY `idcontrato` (`idcontrato`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -123,7 +140,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `contrato`
 --
 ALTER TABLE `contrato`
-  MODIFY `idcontrato` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idcontrato` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `propiedad`
@@ -139,8 +156,14 @@ ALTER TABLE `propiedad`
 -- Filtros para la tabla `contrato`
 --
 ALTER TABLE `contrato`
-  ADD CONSTRAINT `contrato_ibfk_1` FOREIGN KEY (`idpropiedad`) REFERENCES `propiedad` (`idpropiedad`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `contrato_ibfk_2` FOREIGN KEY (`idcliente`) REFERENCES `cliente` (`idcliente`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `propiedad_contrato`
+--
+ALTER TABLE `propiedad_contrato`
+  ADD CONSTRAINT `propiedad_contrato_ibfk_1` FOREIGN KEY (`idcontrato`) REFERENCES `contrato` (`idcontrato`),
+  ADD CONSTRAINT `propiedad_contrato_ibfk_2` FOREIGN KEY (`idpropiedad`) REFERENCES `propiedad` (`idpropiedad`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
