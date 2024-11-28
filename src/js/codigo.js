@@ -2,10 +2,10 @@
 
 var oInmobiliaria = new Inmobiliaria();
 
-document.addEventListener("DOMContentLoaded", function () {
-    registrarEventos();
-    obtenerClientes();
-});
+registrarEventos();
+// document.addEventListener("DOMContentLoaded", function () {
+//     obtenerClientes();
+// });
 
 function registrarEventos() {
     ocultarFormulario();
@@ -30,14 +30,14 @@ function registrarEventos() {
     frmBuscarPropiedad.ModPropiedadBoton.addEventListener("click", procesarBuscarPropiedad);
 
     // Formularios de clientes
-    document.querySelector("#mnuAltaCliente").addEventListener("click", mostrarFormulario);
-    document.querySelector("#mnuListadoCliente").addEventListener("click", mostrarFormulario);
-    document.querySelector("#mnuBuscarCliente").addEventListener("click", mostrarFormulario);
+    // document.querySelector("#mnuAltaCliente").addEventListener("click", mostrarFormulario);
+    // document.querySelector("#mnuListadoCliente").addEventListener("click", mostrarFormulario);
+    // document.querySelector("#mnuBuscarCliente").addEventListener("click", mostrarFormulario);
 
     // Botones de los formularios de clientes
-    frmAltaCliente.guardarClienteBtn.addEventListener("click", procesarAltaCliente);
-    tablaCliente.generarListadoBtn.addEventListener("click", listarClientes);
-    frmBuscarCliente.buscarClienteBtn.addEventListener("click", buscarClientes);
+    // frmAltaCliente.guardarClienteBtn.addEventListener("click", procesarAltaCliente);
+    // tablaCliente.generarListadoBtn.addEventListener("click", listarClientes);
+    // frmBuscarCliente.buscarClienteBtn.addEventListener("click", buscarClientes);
 }
 
 // Funciones de propiedades
