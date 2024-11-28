@@ -5,7 +5,7 @@ $conexion = obtenerConexion();
 // Recoger datos
 $contrato = json_decode($_POST['contrato']);
 
-$sql = "UPDATE contrato SET idcliente = $contrato->idcliente, tipoventa = '$contrato->tipoventa', fecha = '$contrato->fecha', estado = '$contrato->estado' WHERE idcontrato = $contrato->idcontrato";
+$sql = "UPDATE propiedad_contrato SET idpropiedad = '$contrato->idpropiedad' WHERE idcontrato = '$contrato->idcontrato';";
 
 mysqli_query($conexion, $sql);
 

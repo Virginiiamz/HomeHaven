@@ -352,7 +352,9 @@ async function procesarAltaContrato() {
     let fechaContrato = frmAltaContrato.altaContratoFecha.value;
     let estadoContrato = frmAltaContrato.altaContratoEstado.value;
     if (validarAltaContrato()) {
-        let respuesta = await oInmobiliaria.altaContrato(new Contrato(null, idpropiedad, idcliente, tipoContrato, fechaContrato, estadoContrato));
+        let respuesta
+        respuesta = await oInmobiliaria.altaContrato(new Contrato(null, idpropiedad, idcliente, tipoContrato, fechaContrato, estadoContrato));
+        respuesta = await oInmobiliaria.altaPropiedadContrato(new Contrato(null, idpropiedad, idcliente, tipoContrato, fechaContrato, estadoContrato));
         if (!respuesta.error) {
             frmAltaContrato.reset();
         }
@@ -384,26 +386,6 @@ function validarAltaContrato() {
     return valido;
 }
 
-async function procesarListadoPorContrato() {
-    let respuesta = await oInmobiliaria.listadoContrato();
-    let tabla = "<h2>Listado de Contratos</h2>";
-    tabla += "<table class='table table-striped' id='listadoPorContrato'>";
-    tabla += "<thead><tr><th>ID Contrato</th><th>ID Propiedad</th><th>ID Cliente</th><th>Tipo de Contrato</th><th>Fecha</th><th>Estado de venta</th></tr></thead><tbody>";
-    for (let contrato of respuesta.datos) {
-        tabla += "<tr><td>" + contrato.idcontrato + "</td>";
-        tabla += "<td>" + contrato.idpropiedad + "</td>";
-        tabla += "<td>" + contrato.idcliente + "</td>";
-        tabla += "<td>" + contrato.tipoventa + "</td>";
-        tabla += "<td>" + contrato.fecha + "</td>";
-        tabla += "<td>" + contrato.estado + "</td>";
-        tabla += "<td><button class='btn btn-primary modificarContrato' data-contrato='" + JSON.stringify(contrato) + "'><i class='bi bi-pencil-square'></i></button><button class='btn btn-danger ms-3 eliminarContrato' data-contrato='" + JSON.stringify(contrato) + "'><i class='bi bi-trash'></i></button></td></tr>";
-    }
-    tabla += "</tr></tbody></table>";
-    // Agregamos el contenido a la capa de listados
-    document.querySelector("#listadoContrato").innerHTML = tabla;
-    // Agregar manejador de evento para toda la tabla
-    document.querySelector("#listadoPorContrato").addEventListener("click", procesarBotonEditarContrato)
-}
 
 function procesarBotonEditarContrato(oEvento) {
     let boton = null;
@@ -419,11 +401,6 @@ function procesarBotonEditarContrato(oEvento) {
         if (boton.classList.contains("modificarContrato")) {
             frmModContrato.style.display = "block";
             frmModContrato.modContratoIdContrato.value = contrato.idcontrato;
-            frmModContrato.modContratoIdPropiedad.value = contrato.idpropiedad;
-            frmModContrato.modContratoIdCliente.value = contrato.idcliente;
-            frmModContrato.modContratoTipoTrato.value = contrato.tipoventa;
-            frmModContrato.modContratoFecha.value = contrato.fecha;
-            frmModContrato.modContratoEstado.value = contrato.estado;
         } else if (boton.classList.contains("eliminarContrato")) {
             borrarContrato(contrato);
         }
@@ -431,7 +408,9 @@ function procesarBotonEditarContrato(oEvento) {
 }
 
 async function borrarContrato(oEvento) {
-    let respuesta = await oInmobiliaria.borrarContrato(oEvento.idcontrato);
+    let respuesta;
+    respuesta = await oInmobiliaria.borrarContrato(oEvento.idcontrato);
+    // respuesta = await oInmobiliaria.borrarPropiedadContrato(oEvento.idcontrato);
     alert(respuesta.mensaje);
     if (!respuesta.error) { // Si NO hay error
         // Borrado de la tabla html
@@ -449,7 +428,9 @@ async function procesarModificarContrato() {
     // Validar datos del formulario
     if (validarModificarContrato()) {
         let contrato = new Contrato(idcontrato, idpropiedad, idcliente, tipoventa, fecha, estado);
-        let respuesta = await oInmobiliaria.modificarContrato(contrato);
+        let respuesta 
+        respuesta = await oInmobiliaria.modificarContrato(contrato);
+        respuesta = await oInmobiliaria.modificarPropiedadContrato(contrato);
         alert(respuesta.mensaje);
         if (!respuesta.error) { // Si NO hay error
             //Resetear formulario
@@ -475,6 +456,28 @@ function validarModificarContrato() {
     return valido;
 }
 
+
+async function procesarListadoPorContrato() {
+    let respuesta = await oInmobiliaria.listadoContrato();
+    let tabla = "<h2>Listado de Contratos</h2>";
+    tabla += "<table class='table table-striped' id='listadoPorContrato'>";
+    tabla += "<thead><tr><th>ID Contrato</th><th>ID Cliente</th><th>Tipo de Contrato</th><th>Fecha</th><th>Estado de venta</th></tr></thead><tbody>";
+    for (let contrato of respuesta.datos) {
+        tabla += "<tr><td>" + contrato.idcontrato + "</td>";
+        tabla += "<td>" + contrato.idcliente + "</td>";
+        tabla += "<td>" + contrato.tipoventa + "</td>";
+        tabla += "<td>" + contrato.fecha + "</td>";
+        tabla += "<td>" + contrato.estado + "</td>";
+        tabla += "<td><button class='btn btn-primary modificarContrato' data-contrato='" + JSON.stringify(contrato) + "'><i class='bi bi-pencil-square'></i></button><button class='btn btn-danger ms-3 eliminarContrato' data-contrato='" + JSON.stringify(contrato) + "'><i class='bi bi-trash'></i></button></td></tr>";
+    }
+    tabla += "</tr></tbody></table>";
+    // Agregamos el contenido a la capa de listados
+    document.querySelector("#listadoContrato").innerHTML = tabla;
+    // Agregar manejador de evento para toda la tabla
+    document.querySelector("#listadoPorContrato").addEventListener("click", procesarBotonEditarContrato)
+}
+
+
 async function procesarBuscarContrato() {
     let idpropiedad = frmBuscarContrato.buscarContratoIdPropiedad.value;
     let respuesta = await oInmobiliaria.buscarContrato(idpropiedad);
@@ -482,11 +485,10 @@ async function procesarBuscarContrato() {
         let resultadoBusqueda = document.querySelector("#resultadoBusquedaContrato");
         
         let tabla = "<table class='table'>";
-        tabla += "<thead><tr><th>ID Contrato</th><th>ID Propiedad</th><th>ID Cliente</th><th>Tipo de contrato</th><th>Fecha</th><th>Estado</th></tr></thead>";
+        tabla += "<thead><tr><th>ID Contrato</th>><th>ID Cliente</th><th>Tipo de contrato</th><th>Fecha</th><th>Estado</th></tr></thead>";
         tabla += "<tbody>";
         let contrato = respuesta.datos
             tabla += "<tr><td>" + contrato.idcontrato + "</td>";
-            tabla += "<td>" + contrato.idpropiedad + "</td>";
             tabla += "<td>" + contrato.idcliente + "</td>";
             tabla += "<td>" + contrato.tipoventa + "</td>";
             tabla += "<td>" + contrato.fecha + "</td>";

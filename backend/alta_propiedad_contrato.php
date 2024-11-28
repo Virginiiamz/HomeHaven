@@ -4,10 +4,12 @@ $conexion = obtenerConexion();
 
 // Recoger datos
 // $input = file_get_contents("php://input");
-$contrato = json_decode($_POST['contrato']);
+$contrato = json_decode($_POST['propiedadcontrato']);
 
-$sql = "INSERT INTO contrato VALUES (null,  $contrato->idcliente, '$contrato->tipoventa', '$contrato->estado','$contrato->fecha');";
-mysqli_query($conexion, $sql);
+$sql1 = "INSERT INTO propiedad_contrato VALUES ($contrato->idpropiedad, (SELECT idcontrato FROM contrato WHERE idcliente = $contrato->idcliente AND fecha = '$contrato->fecha'));";
+
+
+mysqli_query($conexion, $sql1);
 
 if (mysqli_errno($conexion) != 0) {
     $numerror = mysqli_errno($conexion);
@@ -19,3 +21,5 @@ if (mysqli_errno($conexion) != 0) {
     // Prototipo responder($datos,$error,$mensaje,$conexion)
     responder(null, false, "Se ha dado de alta a la contrato", $conexion);
 }
+
+// $sql1=  "INSERT INTO propiedad_contrato VALUES ($contrato->idpropiedad, $contrato->idcontrato);";

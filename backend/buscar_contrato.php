@@ -6,7 +6,9 @@ $conexion = obtenerConexion();
 $idpropiedad = $_POST['idpropiedad'];
 
 // SQL
-$sql = "SELECT * FROM contrato WHERE idpropiedad = $idpropiedad";
+// $sql = "SELECT * FROM propiedad_contrato WHERE idpropiedad = $idpropiedad";
+
+$sql = "SELECT * FROM contrato WHERE idcontrato = (SELECT idcontrato FROM propiedad_contrato WHERE idpropiedad = $idpropiedad);";
 
 $resultado = mysqli_query($conexion, $sql);
 

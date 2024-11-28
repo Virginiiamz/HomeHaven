@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: db
--- Tiempo de generación: 28-11-2024 a las 10:31:03
+-- Tiempo de generación: 28-11-2024 a las 12:32:42
 -- Versión del servidor: 8.0.39
 -- Versión de PHP: 8.2.8
 
@@ -62,7 +62,10 @@ CREATE TABLE `contrato` (
 
 INSERT INTO `contrato` (`idcontrato`, `idcliente`, `tipoventa`, `estado`, `fecha`) VALUES
 (1, 1, 'Venta', 'comprado', '2024-11-22'),
-(2, 1, 'Compra', 'enproceso', '2024-11-28');
+(2, 1, 'Compra', 'enproceso', '2024-11-28'),
+(3, 1, 'Compra', 'comprado', '2024-12-01'),
+(11, 1, 'Compra', 'comprado', '2024-12-26'),
+(15, 1, 'Venta', 'enproceso', '2024-12-09');
 
 -- --------------------------------------------------------
 
@@ -140,7 +143,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `contrato`
 --
 ALTER TABLE `contrato`
-  MODIFY `idcontrato` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idcontrato` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `propiedad`
@@ -162,6 +165,7 @@ ALTER TABLE `contrato`
 -- Filtros para la tabla `propiedad_contrato`
 --
 ALTER TABLE `propiedad_contrato`
+  ADD CONSTRAINT `fk_propiedad_contrato_contrato` FOREIGN KEY (`idcontrato`) REFERENCES `contrato` (`idcontrato`) ON DELETE CASCADE,
   ADD CONSTRAINT `propiedad_contrato_ibfk_1` FOREIGN KEY (`idcontrato`) REFERENCES `contrato` (`idcontrato`),
   ADD CONSTRAINT `propiedad_contrato_ibfk_2` FOREIGN KEY (`idpropiedad`) REFERENCES `propiedad` (`idpropiedad`);
 COMMIT;

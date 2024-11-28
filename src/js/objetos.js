@@ -121,11 +121,27 @@ class Inmobiliaria {
         return respuesta;
     }
 
+    async altaPropiedadContrato(oPropiedadContrato){
+        let datos = new FormData();
+        datos.append("propiedadcontrato", JSON.stringify(oPropiedadContrato));
+        let respuesta = await peticionPOST("alta_propiedad_contrato.php", datos);
+        alert("Se ha dado de alta el propiedad contrato")
+        return respuesta;
+    }
+
     async modificarContrato(oContrato) {
         let datos = new FormData();
         datos.append("contrato", JSON.stringify(oContrato));
 
         let respuesta = await peticionPOST("modificar_contrato.php", datos);
+        return respuesta;
+    }
+
+    async modificarPropiedadContrato(oContrato) {
+        let datos = new FormData();
+        datos.append("contrato", JSON.stringify(oContrato));
+
+        let respuesta = await peticionPOST("modificar_propiedad_contrato.php", datos);
         return respuesta;
     }
 
@@ -137,11 +153,17 @@ class Inmobiliaria {
         return respuesta;
     }
 
+
     async buscarContrato(idpropiedad) {
         let datos = new FormData();
         datos.append("idpropiedad", idpropiedad);
 
         let respuesta = await peticionPOST("buscar_contrato.php", datos);
+
+        if (respuesta.datos == null) {
+            alert("No existe ningún contrato de este");
+        }
+
         return respuesta;
     }
 
@@ -186,5 +208,17 @@ class Inmobiliaria {
         return respuesta;
     }
 }
+
+ async altaPropiedad_Contrato(){
+    let datos = new FormData();
+
+    let respuesta = await peticionPOST("alta_propiedad_contrato.php", datos);
+
+    if (respuesta.datos == null) {
+        alert("No se ha podido dar de alta en la tabla propiedad_cliente");
+        }
+
+    return respuesta;
+ }
     
 }
